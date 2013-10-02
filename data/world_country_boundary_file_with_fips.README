@@ -1,0 +1,9 @@
+World Country Boundary File with Fips
+
+This is a more up-to-date world boundary file that includes South Sudan. This shapefile was from Natural Earth Data version 1.4. The fips codes were added
+
+Attributes:
+fips cntry: fips cntry - 
+name sort: name - 
+
+exported on Mon Nov 19 07:03:58 -0500 2012

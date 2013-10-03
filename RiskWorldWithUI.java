@@ -10,13 +10,17 @@ import sim.display.Display2D;
 import sim.display.GUIState;
 import sim.portrayal.geo.GeomPortrayal;
 import sim.portrayal.geo.GeomVectorFieldPortrayal;
+import sim.portrayal.simple.OvalPortrayal2D;
 
 public class RiskWorldWithUI extends GUIState {
 	Display2D display;
 	JFrame displayFrame;
 	
 	GeomVectorFieldPortrayal mapPortrayal = new GeomVectorFieldPortrayal();
+	GeomVectorFieldPortrayal capitalPortrayal = new GeomVectorFieldPortrayal();
+	
 	GeomVectorFieldPortrayal netPortrayal = new GeomVectorFieldPortrayal();
+	GeomVectorFieldPortrayal adjPortrayal = new GeomVectorFieldPortrayal();
 	
 	public RiskWorldWithUI() {
 		super(new RiskWorld(System.currentTimeMillis()));
@@ -28,7 +32,9 @@ public class RiskWorldWithUI extends GUIState {
 		display = new Display2D(world.worldWidth, world.worldHeight, this, 1);
 		
 		display.attach(mapPortrayal, "Map");
+		display.attach(capitalPortrayal, "Capitals");
 		display.attach(netPortrayal, "Trade Network");
+		display.attach(adjPortrayal, "Adjacency map");
 		
 		displayFrame = display.createFrame();
 		controller.registerFrame(displayFrame);
@@ -47,9 +53,17 @@ public class RiskWorldWithUI extends GUIState {
 		//mapPortrayal.setPortrayalForAll(new GeomPortrayal(Color.LIGHT_GRAY, true));
 		mapPortrayal.setPortrayalForAll(new CustomPortrayals.CountryPortrayal(Color.LIGHT_GRAY, true));
 		
+		capitalPortrayal.setField(world.capitals);
+		capitalPortrayal.setPortrayalForAll(new OvalPortrayal2D(Color.BLACK, 4.0));
+		
 		netPortrayal.setField(world.networkMap);
-		//netPortrayal.setPortrayalForAll(new GeomPortrayal(Color.BLACK, true));
 		netPortrayal.setPortrayalForAll(new CustomPortrayals.EdgePortrayal(Color.BLACK, true));
+		
+		adjPortrayal.setField(world.adjNetMap);
+		adjPortrayal.setPortrayalForAll(new CustomPortrayals.EdgePortrayal(Color.BLACK, true));
+		
+		//display.setBackdrop(Color.BLACK);
+		//display.setBackdrop(new Color(25,0,190));
 		
 	}
 	

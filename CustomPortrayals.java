@@ -20,7 +20,8 @@ public class CustomPortrayals {
 			MasonGeometry geom = (MasonGeometry)object;
 			Country country = (Country)geom.getUserData();
 			if (country.inCrisis) paint = Color.RED;
-			else paint = Color.LIGHT_GRAY;
+			else paint = Color.LIGHT_GRAY; //Color.DARK_GRAY;
+			
 			super.draw(object, graphics, info);
 		}
 	}
@@ -33,7 +34,8 @@ public class CustomPortrayals {
 		
 		public void draw(Object object, Graphics2D graphics, DrawInfo2D info) {
 			int alpha = 10;
-			Color c = new Color(0, 0, 0, alpha);
+			//Color c = new Color(255, 255, 255, alpha);
+			Color c = new Color(0,0,0,alpha);
 			paint = c;
 			super.draw(object, graphics, info);
 		}

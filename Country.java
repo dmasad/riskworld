@@ -15,6 +15,7 @@ public class Country implements Steppable {
 	String name;
 	MasonGeometry shape;
 	MasonGeometry centroid;
+	MasonGeometry capital;
 	
 	double totalImports;
 	double totalExports;
@@ -66,6 +67,11 @@ public class Country implements Steppable {
 			totalExports += (Long)e.getInfo();
 		}
 		
+	}
+	
+	public MasonGeometry getPoint() {
+		if (capital == null) return centroid;
+		else return capital;
 	}
 	
 	public String getName() {return name;}

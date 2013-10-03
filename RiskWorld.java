@@ -22,24 +22,33 @@ public class RiskWorld extends SimState {
 	// Storage
 	HashMap<String,Country> allCountries;
 	Network tradeNetwork;
+	Network adjNetwork;
 	
 	// Geometries
 	GeomVectorField map = new GeomVectorField(worldHeight, worldWidth);
+	GeomVectorField capitals = new GeomVectorField(worldHeight, worldWidth);
+	
 	GeomVectorField networkMap = new GeomVectorField(worldHeight, worldWidth);
+	GeomVectorField adjNetMap = new GeomVectorField(worldHeight, worldWidth);
 	
 	// Data files:
 	String shapePath = "world_country_boundary_file_with_fips.shp";
 	String edgePath = "export_edges.csv";
+	String capitalPath = "world_capitals.shp";
 	
 	Utilities util = new Utilities();
 	
 	public RiskWorld(long seed) {
 		super(seed);
 		loadMap();
+		loadCapitals();
 		loadEdges();
+		findAdjNetwork();
 		
 		Envelope MBR = map.getMBR();
+		capitals.setMBR(MBR);
 		networkMap.setMBR(MBR);
+		adjNetMap.setMBR(MBR);
 	}
 	
 	public void start() {
@@ -77,6 +86,25 @@ public class RiskWorld extends SimState {
 		System.out.print("Done!\n");
 	}
 	
+	private void loadCapitals() {
+		System.out.print("Loading capitals...");
+		URL capitalData = RiskWorld.class.getResource("data/" + capitalPath);
+		try {
+			ShapeFileImporter.read(capitalData, capitals);
+		} catch (Exception e) {
+			System.out.println("Map not found!");
+		}
+		Bag allCapitals = capitals.getGeometries();
+		for (Object o : allCapitals) {
+			MasonGeometry g = (MasonGeometry)o;
+			String countryName = g.getStringAttribute("COUNTRY");
+			Country country = allCountries.get(countryName);
+			if (country != null) {
+				country.capital = g;
+			}
+		}
+	}
+	
 	/**
 	 * Load the export edges and put them in the network.
 	 */
@@ -95,9 +123,8 @@ public class RiskWorld extends SimState {
 				Country target = allCountries.get(trgt);
 				if (source != null && target != null) {
 					tradeNetwork.addEdge(source, target, val);
-					//networkMap.addGeometry(util.makeLine(source.centroid,target.centroid));
-					//if (source.name.equals("United States of America"))
-						networkMap.addGeometry(util.makeGreatCircleLine(source.centroid, target.centroid));
+					
+					networkMap.addGeometry(util.makeGreatCircleLine(source.getPoint(), target.getPoint()));
 				}
 				else System.out.println("Missing edge: " + line);
 			}
@@ -109,6 +136,18 @@ public class RiskWorld extends SimState {
 		}
 	}
 	
+	private void findAdjNetwork() {
+		System.out.print("Finding adjacency network");
+		adjNetwork = new Network(false);
+		for (Country c : allCountries.values()) {
+			Bag neighbors = map.getObjectsWithinDistance(c.shape, 1);
+			for (Object o : neighbors) {
+				Country c2 = (Country)((MasonGeometry)o).getUserData();
+				adjNetwork.addEdge(c, c2, null);
+				adjNetMap.addGeometry(util.makeGreatCircleLine(c.getPoint(), c2.getPoint()));
+			}
+		}
+	}
 	
 	/**
 	 * Main function

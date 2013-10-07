@@ -10,6 +10,7 @@ import com.vividsolutions.jts.geom.Envelope;
 import sim.engine.SimState;
 import sim.field.geo.GeomVectorField;
 import sim.field.network.Network;
+import sim.field.network.stats.NetworkStatistics;
 import sim.io.geo.ShapeFileImporter;
 import sim.util.Bag;
 import sim.util.geo.MasonGeometry;
@@ -140,7 +141,7 @@ public class RiskWorld extends SimState {
 		System.out.print("Finding adjacency network");
 		adjNetwork = new Network(false);
 		for (Country c : allCountries.values()) {
-			Bag neighbors = map.getObjectsWithinDistance(c.shape, 1);
+			Bag neighbors = map.getObjectsWithinDistance(c.shape, 0.5);
 			for (Object o : neighbors) {
 				Country c2 = (Country)((MasonGeometry)o).getUserData();
 				adjNetwork.addEdge(c, c2, null);

@@ -50,20 +50,20 @@ public class RiskWorldWithUI extends GUIState {
 		RiskWorld world = (RiskWorld)state;
 		
 		mapPortrayal.setField(world.map);
-		//mapPortrayal.setPortrayalForAll(new GeomPortrayal(Color.LIGHT_GRAY, true));
-		mapPortrayal.setPortrayalForAll(new CustomPortrayals.CountryPortrayal(Color.LIGHT_GRAY, true));
+		Color base = new Color(180, 180, 180, 180); // Gray-ish
+		Color crisis = new Color(200, 0, 0, 180);
+		mapPortrayal.setPortrayalForAll(new CustomPortrayals.CountryPortrayal(base, crisis));
 		
 		capitalPortrayal.setField(world.capitals);
 		capitalPortrayal.setPortrayalForAll(new OvalPortrayal2D(Color.BLACK, 4.0));
 		
 		netPortrayal.setField(world.networkMap);
-		netPortrayal.setPortrayalForAll(new CustomPortrayals.EdgePortrayal(Color.BLACK, true));
+		netPortrayal.setPortrayalForAll(new CustomPortrayals.EdgePortrayal(Color.BLACK, 10));
 		
 		adjPortrayal.setField(world.adjNetMap);
-		adjPortrayal.setPortrayalForAll(new CustomPortrayals.EdgePortrayal(Color.BLACK, true));
+		adjPortrayal.setPortrayalForAll(new CustomPortrayals.EdgePortrayal(Color.BLACK, 30));
 		
-		//display.setBackdrop(Color.BLACK);
-		//display.setBackdrop(new Color(25,0,190));
+		display.setBackdrop(new Color(0,35,100));
 		
 	}
 	

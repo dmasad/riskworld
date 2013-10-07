@@ -11,34 +11,32 @@ import sim.util.geo.MasonGeometry;
 public class CustomPortrayals {
 	
 	public static class CountryPortrayal extends GeomPortrayal {
-		
-		public CountryPortrayal(Paint paint, boolean filled) {
-			super(paint, 1.0, filled);
+		Color basePaint;
+		Color crisisPaint;
+		public CountryPortrayal(Color basePaint, Color crisisPaint) {
+			super(basePaint, 1.0, true);
+			this.basePaint = basePaint;
+			this.crisisPaint = crisisPaint;
 		}
 		
 		public void draw(Object object, Graphics2D graphics, DrawInfo2D info) {
 			MasonGeometry geom = (MasonGeometry)object;
 			Country country = (Country)geom.getUserData();
-			if (country.inCrisis) paint = Color.RED;
-			else paint = Color.LIGHT_GRAY; //Color.DARK_GRAY;
-			
+			if (country.inCrisis) paint = crisisPaint;
+			else paint = basePaint;
 			super.draw(object, graphics, info);
 		}
 	}
 	
 	
 	public static class EdgePortrayal extends GeomPortrayal {
-		public EdgePortrayal(Paint paint, boolean filled) {
-			super(paint, 1.0, filled);
+		public EdgePortrayal(Paint paint, int alpha) {
+			super(paint, 1.0, true);
+			Color p = (Color)paint;
+			Color c = new Color(p.getRed(), p.getGreen(), p.getBlue(), alpha);
+			this.paint = c;
 		}
 		
-		public void draw(Object object, Graphics2D graphics, DrawInfo2D info) {
-			int alpha = 10;
-			//Color c = new Color(255, 255, 255, alpha);
-			Color c = new Color(0,0,0,alpha);
-			paint = c;
-			super.draw(object, graphics, info);
-		}
 	}
 
 }

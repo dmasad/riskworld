@@ -38,16 +38,13 @@ public class Country implements Steppable {
 	public void step(SimState state) {
 		world = (RiskWorld)state;
 		
-		// Instability model:
-		if(!inCrisis && world.random.nextBoolean(instability)) {
-			inCrisis = true;
-			crisisLength = Math.ceil(4 * Math.exp(world.random.nextGaussian()));
-		}
-		else if (inCrisis) {
+		if (inCrisis) {
+			percolate();
 			crisisLength--;
-			if (crisisLength==0) inCrisis=false;
+			if (crisisLength < 0) inCrisis = false;
+			
 		}
-		
+		else crisisTest();
 	}
 	
 	public void initIndustry() {
@@ -69,21 +66,44 @@ public class Country implements Steppable {
 		
 	}
 	
+	
+	/**
+	 * Randomly check whether country enters crisis or not.
+	 */
+	public void crisisTest() {
+		if(!inCrisis && world.random.nextBoolean(instability)) {
+			inCrisis = true;
+			crisisLength = Math.ceil(4 * Math.exp(world.random.nextGaussian()));
+		}
+	}
+	
+	public void percolate() {
+		Bag neighbors = world.adjNetwork.getEdgesOut(this);
+		for (Object o : neighbors) {
+			Edge e = (Edge)o;
+			Country neighbor = null;
+			if (e.getFrom().equals(this)) neighbor = (Country)e.getTo();
+			else if (e.getTo().equals(this)) neighbor = (Country)e.getFrom();
+			else System.out.println("Danger!!");
+			Country c = (Country)e.getTo();
+			c.crisisTest();
+		}
+	}
+	
+	/**
+	 * Get the country's representative point; the capital if it has one, otherwise a
+	 * centroid.
+	 * @return MasonGeometry of the point to use as the node for networks.
+	 */
 	public MasonGeometry getPoint() {
 		if (capital == null) return centroid;
 		else return capital;
 	}
 	
+	// Getters and Setters for inspection
 	public String getName() {return name;}
 	public Double getTotalImports() { return totalImports;}
 	public Double getTotalExports() {return totalExports;}
 	
-	
-	/**
-	 * Randomly check whether 
-	 */
-	public void crisisTest() {
-		
-	}
 
 }

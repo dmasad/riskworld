@@ -46,7 +46,7 @@ public class Utilities {
 	public MasonGeometry makeGreatCircleLine(MasonGeometry start, MasonGeometry end) {
 		Coordinate startCoord = start.geometry.getCoordinate();
 		Coordinate endCoord = end.geometry.getCoordinate();
-		ArrayList<Coordinate> allCoords = subdivide(startCoord, endCoord, 0, 4);
+		ArrayList<Coordinate> allCoords = subdivide(startCoord, endCoord, 0, 5);
 		String fullStr = "";
 		for (Coordinate c : allCoords) {
 			String strX = Double.toString(c.x);

@@ -1,7 +1,12 @@
 package riskworld;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.HashMap;
 
@@ -25,6 +30,8 @@ public class RiskWorld extends SimState {
 	Network tradeNetwork;
 	Network adjNetwork;
 	
+	TradeMonitor tm;
+	
 	// Geometries
 	GeomVectorField map = new GeomVectorField(worldHeight, worldWidth);
 	GeomVectorField capitals = new GeomVectorField(worldHeight, worldWidth);
@@ -33,18 +40,23 @@ public class RiskWorld extends SimState {
 	GeomVectorField adjNetMap = new GeomVectorField(worldHeight, worldWidth);
 	
 	// Data files:
+	String fullPath = "/Users/dmasad/Programming/workspace/MasonProjects/src/riskworld/data/";
+	String countryPath = "CountryData.csv";
 	String shapePath = "world_country_boundary_file_with_fips.shp";
 	String edgePath = "export_edges.csv";
+	String adjPath = "adjList.csv";
 	String capitalPath = "world_capitals.shp";
 	
 	Utilities util = new Utilities();
 	
 	public RiskWorld(long seed) {
 		super(seed);
+		loadCountries();
 		loadMap();
 		loadCapitals();
 		loadEdges();
-		findAdjNetwork();
+		loadAdjNetwork();
+		//findAdjNetwork();
 		
 		Envelope MBR = map.getMBR();
 		capitals.setMBR(MBR);
@@ -58,8 +70,34 @@ public class RiskWorld extends SimState {
 		for (Country c : allCountries.values()) {
 			schedule.scheduleRepeating(c);
 			c.initIndustry();
+			c.inCrisis = false;
+			c.crisisLength = -1;
 		}
+		tm = new TradeMonitor(this);
+		schedule.scheduleRepeating(tm);
+	}
 	
+	private void loadCountries() {
+		System.out.print("Loading countries...");
+		allCountries = new HashMap<String,Country>();
+		String line = "";
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(fullPath + countryPath));
+			line = reader.readLine(); // Toss the headers.
+			while ((line = reader.readLine()) != null) {
+				String[] row = line.split("\t");
+				String name = row[0];
+				double instability = Double.parseDouble(row[1]);
+				Country newCountry = new Country(this, name, instability);
+				allCountries.put(name, newCountry);
+				schedule.scheduleRepeating(newCountry);
+			}
+			System.out.print("Done!\n");
+			
+		} catch (Exception e) {
+			System.out.println("\nError loading country file!");
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -74,15 +112,14 @@ public class RiskWorld extends SimState {
 		} catch (Exception e) {
 			System.out.println("Map not found!");
 		}
-		allCountries = new HashMap<String,Country>();
+		//allCountries = new HashMap<String,Country>();
 		Bag states = map.getGeometries();
 		for (Object o : states) {
 			MasonGeometry state = (MasonGeometry)o;
-			Country newCountry = new Country(this, state);
+			String name = state.getStringAttribute("NAME_SORT");
+			Country newCountry = allCountries.get(name);
+			if (newCountry != null) newCountry.setShape(state);
 			state.setUserData(newCountry);
-			String name = state.getStringAttribute("name sort");
-			allCountries.put(name, newCountry);
-			schedule.scheduleRepeating(newCountry);
 		}
 		System.out.print("Done!\n");
 	}
@@ -114,7 +151,7 @@ public class RiskWorld extends SimState {
 		tradeNetwork = new Network();
 		String line = "";
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader("/Users/dmasad/Programming/workspace/MasonProjects/src/riskworld/data/" + edgePath));
+			BufferedReader reader = new BufferedReader(new FileReader(fullPath + edgePath));
 			while((line = reader.readLine()) != null) {
 				String[] row = line.split("\t");
 				String src = row[0];
@@ -124,13 +161,13 @@ public class RiskWorld extends SimState {
 				Country target = allCountries.get(trgt);
 				if (source != null && target != null) {
 					tradeNetwork.addEdge(source, target, val);
-					
 					networkMap.addGeometry(util.makeGreatCircleLine(source.getPoint(), target.getPoint()));
 				}
 				else System.out.println("Missing edge: " + line);
 			}
 			reader.close();
 			System.out.println("Network loaded!");
+			util.writeNetwork(tradeNetwork, fullPath + "tradeNetwork.csv");
 		} catch (Exception e) {
 			System.out.println("Error loading network file!");
 			e.printStackTrace();
@@ -141,15 +178,49 @@ public class RiskWorld extends SimState {
 		System.out.print("Finding adjacency network");
 		adjNetwork = new Network(false);
 		for (Country c : allCountries.values()) {
+			if (c.shape == null) System.out.println(c.name);
 			Bag neighbors = map.getObjectsWithinDistance(c.shape, 0.5);
 			for (Object o : neighbors) {
 				Country c2 = (Country)((MasonGeometry)o).getUserData();
-				adjNetwork.addEdge(c, c2, null);
-				adjNetMap.addGeometry(util.makeGreatCircleLine(c.getPoint(), c2.getPoint()));
+				if (c2 != null) {
+					adjNetwork.addEdge(c, c2, null);
+					adjNetMap.addGeometry(util.makeGreatCircleLine(c.getPoint(), c2.getPoint()));
+				}
+			}
+		}
+		util.writeNetwork(adjNetwork, fullPath + adjPath);
+	}
+	
+	private void loadAdjNetwork() {
+		adjNetwork = new Network(false);
+		String line = "";
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(fullPath + adjPath));
+			line = reader.readLine(); // Toss the header.
+			while ((line = reader.readLine()) != null) {
+				String[] row = line.split("\t");
+				String srcName = row[0];
+				String trgtName = row[1];
+				Country source = allCountries.get(srcName);
+				Country target = allCountries.get(trgtName);
+				adjNetwork.addEdge(source, target, null);
+				adjNetMap.addGeometry(util.makeGreatCircleLine(source.getPoint(), target.getPoint()));
+			}
+			reader.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			File f = new File(fullPath + adjPath);
+			
+			if (!f.exists()) {
+				System.out.println("Adjacency network not found!");
+				findAdjNetwork();
+				
 			}
 		}
 	}
 	
+	
+
 	/**
 	 * Main function
 	 * @param args

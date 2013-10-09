@@ -19,11 +19,22 @@ public class Country implements Steppable {
 	
 	double totalImports;
 	double totalExports;
+	double localRatio;
 	
 	// Crisis model
 	double instability;
 	boolean inCrisis = false;
 	double crisisLength = -1;
+	
+	public Country() {;}
+	
+	public Country(RiskWorld world, String name, double instability) {
+		this.world = world;
+		this.name = name;
+		// Instability=100 <=> Approx. 99% chance of crisis occurring once in 24 periods.
+		this.instability = instability/100.0 * 0.18;
+	}
+	
 	
 	public Country(RiskWorld world, MasonGeometry shape) {
 		this.world = world;
@@ -33,6 +44,11 @@ public class Country implements Steppable {
 		
 		// Random instability:
 		instability = world.random.nextDouble();
+	}
+	
+	public void setShape(MasonGeometry mg) {
+		shape = mg;
+		centroid = new MasonGeometry(shape.geometry.getCentroid());
 	}
 	
 	public void step(SimState state) {
@@ -64,6 +80,20 @@ public class Country implements Steppable {
 			totalExports += (Long)e.getInfo();
 		}
 		
+	}
+	
+	public void updateRatio() {
+		Network network = world.tradeNetwork;
+		Bag inEdges = network.getEdgesIn(this);
+		double currentImports = 0;
+		for (Object o : inEdges) {
+			Edge e = (Edge)o;
+			Country neighbor = null;
+			if (e.getFrom().equals(this)) neighbor = (Country)e.getTo();
+			if (e.getTo().equals(this)) neighbor = (Country)e.getFrom();
+			if (!neighbor.inCrisis) currentImports += (Long)e.getInfo();
+		}
+		localRatio = totalImports/currentImports;
 	}
 	
 	
@@ -104,6 +134,10 @@ public class Country implements Steppable {
 	public String getName() {return name;}
 	public Double getTotalImports() { return totalImports;}
 	public Double getTotalExports() {return totalExports;}
-	
+	public boolean getInCrisis() {return inCrisis;}
+	public void setInCrisis(boolean crisis) {inCrisis = crisis;}
+	public double getCrisisLength() {return crisisLength;}
+	public void setCrisisLength(double length) {crisisLength = length;}
+	public double getLocalRatio() {return localRatio;}
 
 }

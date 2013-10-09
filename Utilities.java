@@ -1,11 +1,22 @@
 package riskworld;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.io.WKTReader;
 
+import sim.field.network.Edge;
+import sim.field.network.Network;
+import sim.util.Bag;
 import sim.util.geo.MasonGeometry;
 
 /**
@@ -16,6 +27,34 @@ import sim.util.geo.MasonGeometry;
 public class Utilities {
 
 	WKTReader rdr = new WKTReader();
+	
+	
+	
+	/**
+	 * Write a network to a tab-delimeted edgelist.
+	 * @param net
+	 * @param fileName
+	 */
+	public void writeNetwork(Network net, String fileName) {
+		try {
+			FileWriter writer = new FileWriter(fileName);
+			writer.append("Source\tTarget\n");
+			for (Object o: net.allNodes) {
+				Country src = (Country)o;
+				String srcName = src.name;
+				Bag neighbors = net.getEdgesOut(o);
+				for (Object e: neighbors) {
+					Edge edge = (Edge)e;
+					Country trgt = null;
+					if (edge.getTo().equals(src)) trgt = (Country)edge.getFrom();
+					if (edge.getFrom().equals(src)) trgt = (Country)edge.getTo();
+					String trgtName = trgt.name;
+					writer.append(srcName + "\t" + trgtName + "\n");
+				}
+			}
+			writer.close();
+		} catch (Exception e) {e.printStackTrace();}
+	}
 	
 	public MasonGeometry makeLine(MasonGeometry start, MasonGeometry end) {
 		Coordinate startCoord = start.geometry.getCoordinate();

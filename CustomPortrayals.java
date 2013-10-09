@@ -10,10 +10,35 @@ import sim.util.geo.MasonGeometry;
 
 public class CustomPortrayals {
 	
+	
+	/**
+	 * Differentiate between countries for which we have data and those we don't.
+	 * @author dmasad
+	 *
+	 */
 	public static class CountryPortrayal extends GeomPortrayal {
+		Color existsPaint;
+		Color nullPaint;
+		
+		public CountryPortrayal(Color existsPaint, Color nullPaint) {
+			super(nullPaint, 1.0, true);
+			this.existsPaint = existsPaint;
+			this.nullPaint = nullPaint;
+		}
+		
+		public void draw(Object object, Graphics2D graphics, DrawInfo2D info) {
+			MasonGeometry geom = (MasonGeometry)object;
+			Country country = (Country)geom.getUserData();
+			if (country == null) paint = nullPaint;
+			else paint = existsPaint;
+			super.draw(object, graphics, info);
+		}
+	}
+	
+	public static class CrisisPortrayal extends GeomPortrayal {
 		Color basePaint;
 		Color crisisPaint;
-		public CountryPortrayal(Color basePaint, Color crisisPaint) {
+		public CrisisPortrayal(Color basePaint, Color crisisPaint) {
 			super(basePaint, 1.0, true);
 			this.basePaint = basePaint;
 			this.crisisPaint = crisisPaint;
@@ -22,7 +47,8 @@ public class CustomPortrayals {
 		public void draw(Object object, Graphics2D graphics, DrawInfo2D info) {
 			MasonGeometry geom = (MasonGeometry)object;
 			Country country = (Country)geom.getUserData();
-			if (country.inCrisis) paint = crisisPaint;
+			if (country == null) paint = basePaint;
+			else if (country.inCrisis) paint = crisisPaint;
 			else paint = basePaint;
 			super.draw(object, graphics, info);
 		}

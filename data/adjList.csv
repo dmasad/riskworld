@@ -1,0 +1,1627 @@
+Source	Target
+Belarus	Russia
+Belarus	Belarus
+Belarus	Belarus
+Belarus	Ukraine
+Belarus	Poland
+Belarus	Latvia
+Belarus	Lithuania
+Belarus	Latvia
+Belarus	Poland
+Belarus	Russia
+Belarus	Ukraine
+Belarus	Lithuania
+Russia	Belarus
+Russia	Latvia
+Russia	Mongolia
+Russia	Korea, North
+Russia	Poland
+Russia	Norway
+Russia	Russia
+Russia	Russia
+Russia	United States of America
+Russia	China
+Russia	Japan
+Russia	Korea, North
+Russia	Finland
+Russia	Kazakhstan
+Russia	Belarus
+Russia	Ukraine
+Russia	Poland
+Russia	Estonia
+Russia	Latvia
+Russia	Lithuania
+Russia	Azerbaijan
+Russia	Georgia
+Russia	Mongolia
+Russia	Georgia
+Russia	Norway
+Russia	Japan
+Russia	Ukraine
+Russia	United States of America
+Russia	Estonia
+Russia	Azerbaijan
+Russia	China
+Russia	Finland
+Russia	Lithuania
+Russia	Kazakhstan
+Ukraine	Belarus
+Ukraine	Romania
+Ukraine	Hungary
+Ukraine	Poland
+Ukraine	Russia
+Ukraine	Slovakia
+Ukraine	Russia
+Ukraine	Belarus
+Ukraine	Ukraine
+Ukraine	Ukraine
+Ukraine	Hungary
+Ukraine	Moldova
+Ukraine	Poland
+Ukraine	Romania
+Ukraine	Slovakia
+Ukraine	Moldova
+Poland	Belarus
+Poland	Czech Republic
+Poland	Russia
+Poland	Belarus
+Poland	Ukraine
+Poland	Czech Republic
+Poland	Germany
+Poland	Poland
+Poland	Poland
+Poland	Slovakia
+Poland	Lithuania
+Poland	Russia
+Poland	Germany
+Poland	Slovakia
+Poland	Ukraine
+Poland	Lithuania
+Latvia	Belarus
+Latvia	Russia
+Latvia	Belarus
+Latvia	Estonia
+Latvia	Latvia
+Latvia	Latvia
+Latvia	Lithuania
+Latvia	Russia
+Latvia	Estonia
+Latvia	Lithuania
+Lithuania	Belarus
+Lithuania	Latvia
+Lithuania	Poland
+Lithuania	Russia
+Lithuania	Russia
+Lithuania	Belarus
+Lithuania	Poland
+Lithuania	Latvia
+Lithuania	Lithuania
+Lithuania	Lithuania
+Portugal	Spain
+Portugal	Portugal
+Portugal	Portugal
+Portugal	Spain
+Spain	Portugal
+Spain	Morocco
+Spain	France
+Spain	France
+Spain	Spain
+Spain	Spain
+Spain	Morocco
+Spain	Portugal
+Philippines	Malaysia
+Philippines	Philippines
+Philippines	Philippines
+Philippines	Malaysia
+Malaysia	Philippines
+Malaysia	Indonesia
+Malaysia	Indonesia
+Malaysia	Malaysia
+Malaysia	Malaysia
+Malaysia	Philippines
+Malaysia	Thailand
+Malaysia	Singapore
+Malaysia	Thailand
+Malaysia	Singapore
+Morocco	Algeria
+Morocco	Spain
+Morocco	Morocco
+Morocco	Morocco
+Morocco	Mauritania
+Morocco	Algeria
+Morocco	Mauritania
+Morocco	Spain
+Algeria	Morocco
+Algeria	Mali
+Algeria	Niger
+Algeria	Algeria
+Algeria	Algeria
+Algeria	Mali
+Algeria	Morocco
+Algeria	Mauritania
+Algeria	Libya
+Algeria	Tunisia
+Algeria	Niger
+Algeria	Mauritania
+Algeria	Libya
+Algeria	Tunisia
+Mauritania	Morocco
+Mauritania	Mali
+Mauritania	Algeria
+Mauritania	Algeria
+Mauritania	Mali
+Mauritania	Morocco
+Mauritania	Mauritania
+Mauritania	Mauritania
+Mauritania	Senegal
+Mauritania	Senegal
+Mali	Algeria
+Mali	Burkina Faso
+Mali	Mali
+Mali	Mali
+Mali	Mauritania
+Mali	Senegal
+Mali	Guinea
+Mali	Ivory Coast
+Mali	Niger
+Mali	Niger
+Mali	Algeria
+Mali	Burkina Faso
+Mali	Mauritania
+Mali	Senegal
+Mali	Guinea
+Mali	Ivory Coast
+Burkina Faso	Mali
+Burkina Faso	Niger
+Burkina Faso	Benin
+Burkina Faso	Burkina Faso
+Burkina Faso	Burkina Faso
+Burkina Faso	Ghana
+Burkina Faso	Mali
+Burkina Faso	Togo
+Burkina Faso	Ivory Coast
+Burkina Faso	Niger
+Burkina Faso	Benin
+Burkina Faso	Ghana
+Burkina Faso	Ivory Coast
+Burkina Faso	Togo
+Senegal	Mali
+Senegal	Mauritania
+Senegal	Guinea Bissau (Guinea-Bissau)
+Senegal	Mali
+Senegal	Gambia
+Senegal	Guinea Bissau (Guinea-Bissau)
+Senegal	Mauritania
+Senegal	Senegal
+Senegal	Senegal
+Senegal	Guinea
+Senegal	Guinea
+Senegal	Gambia
+Guinea	Mali
+Guinea	Sierra Leone
+Guinea	Guinea Bissau (Guinea-Bissau)
+Guinea	Senegal
+Guinea	Mali
+Guinea	Guinea Bissau (Guinea-Bissau)
+Guinea	Senegal
+Guinea	Guinea
+Guinea	Guinea
+Guinea	Ivory Coast
+Guinea	Liberia
+Guinea	Sierra Leone
+Guinea	Ivory Coast
+Guinea	Liberia
+Ivory Coast	Mali
+Ivory Coast	Burkina Faso
+Ivory Coast	Guinea
+Ivory Coast	Ghana
+Ivory Coast	Burkina Faso
+Ivory Coast	Ghana
+Ivory Coast	Mali
+Ivory Coast	Guinea
+Ivory Coast	Ivory Coast
+Ivory Coast	Ivory Coast
+Ivory Coast	Liberia
+Ivory Coast	Liberia
+Niger	Mali
+Niger	Algeria
+Niger	Burkina Faso
+Niger	Mali
+Niger	Libya
+Niger	Chad
+Niger	Niger
+Niger	Niger
+Niger	Benin
+Niger	Nigeria
+Niger	Chad
+Niger	Benin
+Niger	Algeria
+Niger	Burkina Faso
+Niger	Libya
+Niger	Nigeria
+Tanzania	Congo (Kinshasa)
+Tanzania	Kenya
+Tanzania	Uganda
+Tanzania	Mozambique
+Tanzania	Tanzania
+Tanzania	Tanzania
+Tanzania	Zambia
+Tanzania	Burundi
+Tanzania	Rwanda
+Tanzania	Malawi
+Tanzania	Burundi
+Tanzania	Mozambique
+Tanzania	Congo (Kinshasa)
+Tanzania	Rwanda
+Tanzania	Kenya
+Tanzania	Malawi
+Tanzania	Uganda
+Tanzania	Zambia
+Congo (Kinshasa)	Tanzania
+Congo (Kinshasa)	Burundi
+Congo (Kinshasa)	Central African Republic
+Congo (Kinshasa)	Angola
+Congo (Kinshasa)	Congo (Brazzaville)
+Congo (Kinshasa)	Congo (Kinshasa)
+Congo (Kinshasa)	Congo (Kinshasa)
+Congo (Kinshasa)	Uganda
+Congo (Kinshasa)	Tanzania
+Congo (Kinshasa)	Zambia
+Congo (Kinshasa)	Angola
+Congo (Kinshasa)	Burundi
+Congo (Kinshasa)	Rwanda
+Congo (Kinshasa)	Central African Republic
+Congo (Kinshasa)	Rwanda
+Congo (Kinshasa)	Uganda
+Congo (Kinshasa)	Zambia
+Congo (Kinshasa)	Congo (Brazzaville)
+Kenya	Tanzania
+Kenya	Ethiopia
+Kenya	Kenya
+Kenya	Kenya
+Kenya	Uganda
+Kenya	Tanzania
+Kenya	Ethiopia
+Kenya	Uganda
+Uganda	Tanzania
+Uganda	Congo (Kinshasa)
+Uganda	Rwanda
+Uganda	Kenya
+Uganda	Congo (Kinshasa)
+Uganda	Kenya
+Uganda	Uganda
+Uganda	Uganda
+Uganda	Tanzania
+Uganda	Rwanda
+Mozambique	Tanzania
+Mozambique	Mozambique
+Mozambique	Mozambique
+Mozambique	South Africa
+Mozambique	Swaziland
+Mozambique	Tanzania
+Mozambique	Zambia
+Mozambique	Zimbabwe
+Mozambique	Malawi
+Mozambique	South Africa
+Mozambique	Swaziland
+Mozambique	Zimbabwe
+Mozambique	Malawi
+Mozambique	Zambia
+Zambia	Tanzania
+Zambia	Mozambique
+Zambia	Angola
+Zambia	Congo (Kinshasa)
+Zambia	Namibia
+Zambia	Zimbabwe
+Zambia	Malawi
+Zambia	Congo (Kinshasa)
+Zambia	Mozambique
+Zambia	Tanzania
+Zambia	Zambia
+Zambia	Zambia
+Zambia	Zimbabwe
+Zambia	Angola
+Zambia	Namibia
+Zambia	Botswana
+Zambia	Malawi
+Zambia	Botswana
+Burundi	Tanzania
+Burundi	Congo (Kinshasa)
+Burundi	Tanzania
+Burundi	Burundi
+Burundi	Burundi
+Burundi	Rwanda
+Burundi	Congo (Kinshasa)
+Burundi	Rwanda
+Rwanda	Tanzania
+Rwanda	Burundi
+Rwanda	Congo (Kinshasa)
+Rwanda	Congo (Kinshasa)
+Rwanda	Uganda
+Rwanda	Tanzania
+Rwanda	Burundi
+Rwanda	Rwanda
+Rwanda	Rwanda
+Rwanda	Uganda
+Malawi	Tanzania
+Malawi	Mozambique
+Malawi	Mozambique
+Malawi	Tanzania
+Malawi	Zambia
+Malawi	Malawi
+Malawi	Malawi
+Malawi	Zambia
+Ecuador	Colombia
+Ecuador	Ecuador
+Ecuador	Ecuador
+Ecuador	Peru
+Ecuador	Colombia
+Ecuador	Peru
+Colombia	Ecuador
+Colombia	Panama
+Colombia	Brazil
+Colombia	Colombia
+Colombia	Colombia
+Colombia	Ecuador
+Colombia	Peru
+Colombia	Venezuela
+Colombia	Panama
+Colombia	Brazil
+Colombia	Venezuela
+Colombia	Peru
+Peru	Ecuador
+Peru	Colombia
+Peru	Brazil
+Peru	Bolivia
+Peru	Brazil
+Peru	Colombia
+Peru	Ecuador
+Peru	Bolivia
+Peru	Peru
+Peru	Peru
+Kyrgyzstan	China
+Kyrgyzstan	Kazakhstan
+Kyrgyzstan	Uzbekistan
+Kyrgyzstan	Kyrgyzstan
+Kyrgyzstan	Kyrgyzstan
+Kyrgyzstan	Tajikistan
+Kyrgyzstan	Uzbekistan
+Kyrgyzstan	Tajikistan
+Kyrgyzstan	China
+Kyrgyzstan	Kazakhstan
+China	Kyrgyzstan
+China	Afghanistan
+China	Laos
+China	Mongolia
+China	Korea, North
+China	Russia
+China	Taiwan
+China	Tajikistan
+China	India
+China	Myanmar
+China	Pakistan
+China	Bhutan
+China	Nepal
+China	Vietnam
+China	Hong Kong S.A.R.
+China	Russia
+China	China
+China	China
+China	Korea, North
+China	Afghanistan
+China	Kazakhstan
+China	Pakistan
+China	India
+China	Mongolia
+China	Myanmar
+China	Nepal
+China	Bhutan
+China	Laos
+China	Vietnam
+China	Taiwan
+China	Hong Kong S.A.R.
+China	Kyrgyzstan
+China	Tajikistan
+China	Kazakhstan
+Kazakhstan	Kyrgyzstan
+Kazakhstan	Uzbekistan
+Kazakhstan	Mongolia
+Kazakhstan	Russia
+Kazakhstan	Tajikistan
+Kazakhstan	Turkmenistan
+Kazakhstan	China
+Kazakhstan	Russia
+Kazakhstan	China
+Kazakhstan	Kazakhstan
+Kazakhstan	Kazakhstan
+Kazakhstan	Turkmenistan
+Kazakhstan	Uzbekistan
+Kazakhstan	Mongolia
+Kazakhstan	Kyrgyzstan
+Kazakhstan	Tajikistan
+Uzbekistan	Kyrgyzstan
+Uzbekistan	Afghanistan
+Uzbekistan	Afghanistan
+Uzbekistan	Kazakhstan
+Uzbekistan	Turkmenistan
+Uzbekistan	Uzbekistan
+Uzbekistan	Uzbekistan
+Uzbekistan	Kyrgyzstan
+Uzbekistan	Tajikistan
+Uzbekistan	Tajikistan
+Uzbekistan	Turkmenistan
+Uzbekistan	Kazakhstan
+Tajikistan	Kyrgyzstan
+Tajikistan	Afghanistan
+Tajikistan	Uzbekistan
+Tajikistan	China
+Tajikistan	Afghanistan
+Tajikistan	Kazakhstan
+Tajikistan	Pakistan
+Tajikistan	Uzbekistan
+Tajikistan	Kyrgyzstan
+Tajikistan	Tajikistan
+Tajikistan	Tajikistan
+Tajikistan	Pakistan
+Tajikistan	China
+Tajikistan	Kazakhstan
+Indonesia	Indonesia
+Indonesia	Indonesia
+Indonesia	East Timor (Timor Leste)
+Indonesia	Papua New Guinea
+Indonesia	Malaysia
+Indonesia	Singapore
+Indonesia	Malaysia
+Indonesia	Papua New Guinea
+Indonesia	East Timor (Timor Leste)
+Indonesia	Singapore
+East Timor (Timor Leste)	Indonesia
+East Timor (Timor Leste)	Indonesia
+East Timor (Timor Leste)	East Timor (Timor Leste)
+East Timor (Timor Leste)	East Timor (Timor Leste)
+Papua New Guinea	Indonesia
+Papua New Guinea	Indonesia
+Papua New Guinea	Australia
+Papua New Guinea	Papua New Guinea
+Papua New Guinea	Papua New Guinea
+Papua New Guinea	Australia
+Singapore	Indonesia
+Singapore	Malaysia
+Singapore	Indonesia
+Singapore	Malaysia
+Singapore	Singapore
+Singapore	Singapore
+Luxembourg	France
+Luxembourg	Germany
+Luxembourg	Belgium
+Luxembourg	Luxembourg
+Luxembourg	Luxembourg
+Luxembourg	France
+Luxembourg	Germany
+Luxembourg	Belgium
+France	Luxembourg
+France	Brazil
+France	France
+France	France
+France	Spain
+France	United Kingdom
+France	Germany
+France	Italy
+France	Switzerland
+France	Belgium
+France	Luxembourg
+France	Switzerland
+France	Germany
+France	Italy
+France	Brazil
+France	Spain
+France	United Kingdom
+France	Belgium
+Germany	Luxembourg
+Germany	France
+Germany	Czech Republic
+Germany	Switzerland
+Germany	Austria
+Germany	Poland
+Germany	France
+Germany	Netherlands
+Germany	Austria
+Germany	Czech Republic
+Germany	Germany
+Germany	Germany
+Germany	Italy
+Germany	Poland
+Germany	Switzerland
+Germany	Denmark
+Germany	Belgium
+Germany	Luxembourg
+Germany	Italy
+Germany	Denmark
+Germany	Netherlands
+Germany	Belgium
+Belgium	Luxembourg
+Belgium	France
+Belgium	Germany
+Belgium	Netherlands
+Belgium	France
+Belgium	Netherlands
+Belgium	Germany
+Belgium	Belgium
+Belgium	Belgium
+Belgium	Luxembourg
+Chile	Argentina
+Chile	Chile
+Chile	Chile
+Chile	Argentina
+Argentina	Chile
+Argentina	Paraguay
+Argentina	Brazil
+Argentina	Argentina
+Argentina	Argentina
+Argentina	Bolivia
+Argentina	Chile
+Argentina	Uruguay
+Argentina	Paraguay
+Argentina	Uruguay
+Argentina	Brazil
+Argentina	Bolivia
+Afghanistan	China
+Afghanistan	Afghanistan
+Afghanistan	Afghanistan
+Afghanistan	Pakistan
+Afghanistan	Turkmenistan
+Afghanistan	Uzbekistan
+Afghanistan	Iran
+Afghanistan	Tajikistan
+Afghanistan	Uzbekistan
+Afghanistan	Iran
+Afghanistan	Tajikistan
+Afghanistan	Pakistan
+Afghanistan	Turkmenistan
+Afghanistan	China
+Pakistan	Afghanistan
+Pakistan	Iran
+Pakistan	Tajikistan
+Pakistan	India
+Pakistan	China
+Pakistan	Afghanistan
+Pakistan	Pakistan
+Pakistan	Pakistan
+Pakistan	Iran
+Pakistan	India
+Pakistan	Tajikistan
+Pakistan	China
+Turkmenistan	Afghanistan
+Turkmenistan	Uzbekistan
+Turkmenistan	Iran
+Turkmenistan	Afghanistan
+Turkmenistan	Kazakhstan
+Turkmenistan	Turkmenistan
+Turkmenistan	Turkmenistan
+Turkmenistan	Uzbekistan
+Turkmenistan	Iran
+Turkmenistan	Kazakhstan
+Iran	Afghanistan
+Iran	Oman
+Iran	Turkey
+Iran	United Arab Emirates
+Iran	Afghanistan
+Iran	Pakistan
+Iran	Turkmenistan
+Iran	Iran
+Iran	Iran
+Iran	Iraq
+Iran	Turkey
+Iran	Kuwait
+Iran	Oman
+Iran	United Arab Emirates
+Iran	Azerbaijan
+Iran	Armenia
+Iran	Iraq
+Iran	Kuwait
+Iran	Pakistan
+Iran	Armenia
+Iran	Azerbaijan
+Iran	Turkmenistan
+Nicaragua	Honduras
+Nicaragua	Costa Rica
+Nicaragua	El Salvador
+Nicaragua	Nicaragua
+Nicaragua	Nicaragua
+Nicaragua	El Salvador
+Nicaragua	Costa Rica
+Nicaragua	Honduras
+Honduras	Nicaragua
+Honduras	El Salvador
+Honduras	Guatemala
+Honduras	Guatemala
+Honduras	Honduras
+Honduras	Honduras
+Honduras	El Salvador
+Honduras	Nicaragua
+Costa Rica	Nicaragua
+Costa Rica	Panama
+Costa Rica	Panama
+Costa Rica	Costa Rica
+Costa Rica	Costa Rica
+Costa Rica	Nicaragua
+El Salvador	Nicaragua
+El Salvador	Guatemala
+El Salvador	Honduras
+El Salvador	El Salvador
+El Salvador	El Salvador
+El Salvador	Nicaragua
+El Salvador	Guatemala
+El Salvador	Honduras
+Brazil	France
+Brazil	Guyana
+Brazil	Paraguay
+Brazil	Colombia
+Brazil	Argentina
+Brazil	Uruguay
+Brazil	Brazil
+Brazil	Brazil
+Brazil	Colombia
+Brazil	France
+Brazil	Argentina
+Brazil	Bolivia
+Brazil	Peru
+Brazil	Uruguay
+Brazil	Paraguay
+Brazil	Venezuela
+Brazil	Guyana
+Brazil	Venezuela
+Brazil	Bolivia
+Brazil	Peru
+United Kingdom	France
+United Kingdom	Ireland
+United Kingdom	France
+United Kingdom	United Kingdom
+United Kingdom	United Kingdom
+United Kingdom	Ireland
+Italy	France
+Italy	Switzerland
+Italy	Slovenia
+Italy	Austria
+Italy	Germany
+Italy	France
+Italy	Austria
+Italy	Croatia
+Italy	Germany
+Italy	Italy
+Italy	Italy
+Italy	Slovenia
+Italy	Switzerland
+Italy	Croatia
+Switzerland	France
+Switzerland	France
+Switzerland	Austria
+Switzerland	Germany
+Switzerland	Italy
+Switzerland	Switzerland
+Switzerland	Switzerland
+Switzerland	Austria
+Switzerland	Germany
+Switzerland	Italy
+Haiti	Dominican Republic
+Haiti	Haiti
+Haiti	Haiti
+Haiti	Dominican Republic
+Dominican Republic	Haiti
+Dominican Republic	Dominican Republic
+Dominican Republic	Dominican Republic
+Dominican Republic	Haiti
+Bahrain	Saudi Arabia
+Bahrain	Bahrain
+Bahrain	Bahrain
+Bahrain	Qatar
+Bahrain	Saudi Arabia
+Bahrain	Qatar
+Saudi Arabia	Bahrain
+Saudi Arabia	Oman
+Saudi Arabia	Egypt
+Saudi Arabia	Iraq
+Saudi Arabia	Israel
+Saudi Arabia	Jordan
+Saudi Arabia	Saudi Arabia
+Saudi Arabia	Saudi Arabia
+Saudi Arabia	Kuwait
+Saudi Arabia	Yemen
+Saudi Arabia	Oman
+Saudi Arabia	United Arab Emirates
+Saudi Arabia	Bahrain
+Saudi Arabia	Qatar
+Saudi Arabia	Yemen
+Saudi Arabia	Egypt
+Saudi Arabia	United Arab Emirates
+Saudi Arabia	Iraq
+Saudi Arabia	Jordan
+Saudi Arabia	Kuwait
+Saudi Arabia	Qatar
+Saudi Arabia	Israel
+Qatar	Bahrain
+Qatar	Saudi Arabia
+Qatar	United Arab Emirates
+Qatar	Saudi Arabia
+Qatar	United Arab Emirates
+Qatar	Bahrain
+Qatar	Qatar
+Qatar	Qatar
+Cape Verde	Cape Verde
+Cape Verde	Cape Verde
+Sierra Leone	Guinea
+Sierra Leone	Liberia
+Sierra Leone	Sierra Leone
+Sierra Leone	Sierra Leone
+Sierra Leone	Guinea
+Sierra Leone	Liberia
+Liberia	Sierra Leone
+Liberia	Guinea
+Liberia	Ivory Coast
+Liberia	Guinea
+Liberia	Ivory Coast
+Liberia	Liberia
+Liberia	Liberia
+Liberia	Sierra Leone
+Estonia	Latvia
+Estonia	Russia
+Estonia	Russia
+Estonia	Finland
+Estonia	Estonia
+Estonia	Estonia
+Estonia	Latvia
+Estonia	Finland
+Bangladesh	India
+Bangladesh	Myanmar
+Bangladesh	Bangladesh
+Bangladesh	Bangladesh
+Bangladesh	Nepal
+Bangladesh	Bhutan
+Bangladesh	India
+Bangladesh	Myanmar
+Bangladesh	Bhutan
+Bangladesh	Nepal
+India	Bangladesh
+India	Sri Lanka
+India	China
+India	Pakistan
+India	India
+India	India
+India	Myanmar
+India	Sri Lanka
+India	Bangladesh
+India	Nepal
+India	Bhutan
+India	Myanmar
+India	Pakistan
+India	Bhutan
+India	Nepal
+India	China
+Myanmar	Bangladesh
+Myanmar	Laos
+Myanmar	Thailand
+Myanmar	India
+Myanmar	China
+Myanmar	India
+Myanmar	Myanmar
+Myanmar	Myanmar
+Myanmar	Bangladesh
+Myanmar	Laos
+Myanmar	Thailand
+Myanmar	China
+Nepal	Bangladesh
+Nepal	India
+Nepal	China
+Nepal	India
+Nepal	Bangladesh
+Nepal	Nepal
+Nepal	Nepal
+Nepal	China
+Bhutan	Bangladesh
+Bhutan	India
+Bhutan	China
+Bhutan	India
+Bhutan	Bangladesh
+Bhutan	Bhutan
+Bhutan	Bhutan
+Bhutan	China
+Bosnia and Herzegovina	Bosnia and Herzegovina
+Bosnia and Herzegovina	Bosnia and Herzegovina
+Bosnia and Herzegovina	Croatia
+Bosnia and Herzegovina	Montenegro
+Bosnia and Herzegovina	Serbia
+Bosnia and Herzegovina	Montenegro
+Bosnia and Herzegovina	Croatia
+Bosnia and Herzegovina	Serbia
+Croatia	Bosnia and Herzegovina
+Croatia	Slovenia
+Croatia	Austria
+Croatia	Hungary
+Croatia	Italy
+Croatia	Montenegro
+Croatia	Austria
+Croatia	Bosnia and Herzegovina
+Croatia	Croatia
+Croatia	Croatia
+Croatia	Hungary
+Croatia	Italy
+Croatia	Slovenia
+Croatia	Montenegro
+Croatia	Serbia
+Croatia	Serbia
+Montenegro	Bosnia and Herzegovina
+Montenegro	Albania
+Montenegro	Bosnia and Herzegovina
+Montenegro	Croatia
+Montenegro	Albania
+Montenegro	Montenegro
+Montenegro	Montenegro
+Montenegro	Serbia
+Montenegro	Croatia
+Montenegro	Serbia
+Serbia	Bosnia and Herzegovina
+Serbia	Romania
+Serbia	Albania
+Serbia	Hungary
+Serbia	Bulgaria
+Serbia	Macedonia, The former Yugoslav Republic of
+Serbia	Montenegro
+Serbia	Croatia
+Serbia	Bosnia and Herzegovina
+Serbia	Croatia
+Serbia	Hungary
+Serbia	Romania
+Serbia	Albania
+Serbia	Bulgaria
+Serbia	Montenegro
+Serbia	Serbia
+Serbia	Serbia
+Serbia	Macedonia, The former Yugoslav Republic of
+Panama	Colombia
+Panama	Panama
+Panama	Panama
+Panama	Costa Rica
+Panama	Colombia
+Panama	Costa Rica
+Oman	Iran
+Oman	Saudi Arabia
+Oman	Yemen
+Oman	Oman
+Oman	Oman
+Oman	United Arab Emirates
+Oman	Saudi Arabia
+Oman	Yemen
+Oman	United Arab Emirates
+Oman	Iran
+Yemen	Oman
+Yemen	Saudi Arabia
+Yemen	Saudi Arabia
+Yemen	Eritrea
+Yemen	Yemen
+Yemen	Yemen
+Yemen	Oman
+Yemen	Eritrea
+United Arab Emirates	Oman
+United Arab Emirates	Saudi Arabia
+United Arab Emirates	Iran
+United Arab Emirates	Saudi Arabia
+United Arab Emirates	Oman
+United Arab Emirates	United Arab Emirates
+United Arab Emirates	United Arab Emirates
+United Arab Emirates	Qatar
+United Arab Emirates	Iran
+United Arab Emirates	Qatar
+Turkey	Iran
+Turkey	Iraq
+Turkey	Turkey
+Turkey	Turkey
+Turkey	Bulgaria
+Turkey	Greece
+Turkey	Azerbaijan
+Turkey	Armenia
+Turkey	Georgia
+Turkey	Syria
+Turkey	Syria
+Turkey	Georgia
+Turkey	Bulgaria
+Turkey	Iran
+Turkey	Greece
+Turkey	Iraq
+Turkey	Armenia
+Turkey	Azerbaijan
+Iraq	Turkey
+Iraq	Saudi Arabia
+Iraq	Syria
+Iraq	Iran
+Iraq	Iran
+Iraq	Iraq
+Iraq	Iraq
+Iraq	Jordan
+Iraq	Saudi Arabia
+Iraq	Turkey
+Iraq	Kuwait
+Iraq	Syria
+Iraq	Jordan
+Iraq	Kuwait
+Bulgaria	Turkey
+Bulgaria	Romania
+Bulgaria	Turkey
+Bulgaria	Romania
+Bulgaria	Bulgaria
+Bulgaria	Bulgaria
+Bulgaria	Greece
+Bulgaria	Serbia
+Bulgaria	Macedonia, The former Yugoslav Republic of
+Bulgaria	Greece
+Bulgaria	Macedonia, The former Yugoslav Republic of
+Bulgaria	Serbia
+Greece	Turkey
+Greece	Albania
+Greece	Bulgaria
+Greece	Turkey
+Greece	Albania
+Greece	Bulgaria
+Greece	Greece
+Greece	Greece
+Greece	Macedonia, The former Yugoslav Republic of
+Greece	Macedonia, The former Yugoslav Republic of
+Azerbaijan	Turkey
+Azerbaijan	Russia
+Azerbaijan	Georgia
+Azerbaijan	Iran
+Azerbaijan	Armenia
+Azerbaijan	Russia
+Azerbaijan	Iran
+Azerbaijan	Turkey
+Azerbaijan	Azerbaijan
+Azerbaijan	Azerbaijan
+Azerbaijan	Armenia
+Azerbaijan	Georgia
+Armenia	Turkey
+Armenia	Georgia
+Armenia	Iran
+Armenia	Iran
+Armenia	Turkey
+Armenia	Azerbaijan
+Armenia	Armenia
+Armenia	Armenia
+Armenia	Georgia
+Armenia	Azerbaijan
+Georgia	Turkey
+Georgia	Russia
+Georgia	Russia
+Georgia	Turkey
+Georgia	Azerbaijan
+Georgia	Armenia
+Georgia	Georgia
+Georgia	Georgia
+Georgia	Armenia
+Georgia	Azerbaijan
+Syria	Turkey
+Syria	Iraq
+Syria	Israel
+Syria	Jordan
+Syria	Turkey
+Syria	Syria
+Syria	Syria
+Syria	Lebanon
+Syria	Lebanon
+Syria	Iraq
+Syria	Jordan
+Syria	Israel
+Guyana	Brazil
+Guyana	Venezuela
+Guyana	Guyana
+Guyana	Guyana
+Guyana	Brazil
+Guyana	Venezuela
+Venezuela	Guyana
+Venezuela	Colombia
+Venezuela	Brazil
+Venezuela	Brazil
+Venezuela	Colombia
+Venezuela	Venezuela
+Venezuela	Venezuela
+Venezuela	Guyana
+Venezuela	Trinidad and Tobago
+Venezuela	Trinidad and Tobago
+Libya	Niger
+Libya	Chad
+Libya	Algeria
+Libya	Egypt
+Libya	Algeria
+Libya	Egypt
+Libya	Libya
+Libya	Libya
+Libya	Sudan
+Libya	Tunisia
+Libya	Chad
+Libya	Niger
+Libya	Tunisia
+Libya	Sudan
+Chad	Niger
+Chad	Libya
+Chad	Sudan
+Chad	Cameroon
+Chad	Central African Republic
+Chad	Chad
+Chad	Chad
+Chad	Niger
+Chad	Nigeria
+Chad	Central African Republic
+Chad	Libya
+Chad	Cameroon
+Chad	Nigeria
+Chad	Sudan
+Benin	Niger
+Benin	Burkina Faso
+Benin	Ghana
+Benin	Togo
+Benin	Niger
+Benin	Benin
+Benin	Benin
+Benin	Nigeria
+Benin	Burkina Faso
+Benin	Ghana
+Benin	Nigeria
+Benin	Togo
+Nigeria	Niger
+Nigeria	Chad
+Nigeria	Benin
+Nigeria	Cameroon
+Nigeria	Cameroon
+Nigeria	Chad
+Nigeria	Niger
+Nigeria	Benin
+Nigeria	Nigeria
+Nigeria	Nigeria
+Czech Republic	Austria
+Czech Republic	Czech Republic
+Czech Republic	Czech Republic
+Czech Republic	Germany
+Czech Republic	Poland
+Czech Republic	Slovakia
+Czech Republic	Austria
+Czech Republic	Poland
+Czech Republic	Germany
+Czech Republic	Slovakia
+Austria	Czech Republic
+Austria	Switzerland
+Austria	Slovenia
+Austria	Austria
+Austria	Austria
+Austria	Croatia
+Austria	Czech Republic
+Austria	Germany
+Austria	Hungary
+Austria	Italy
+Austria	Slovakia
+Austria	Slovenia
+Austria	Switzerland
+Austria	Hungary
+Austria	Germany
+Austria	Slovakia
+Austria	Italy
+Austria	Croatia
+Slovakia	Czech Republic
+Slovakia	Austria
+Slovakia	Hungary
+Slovakia	Poland
+Slovakia	Ukraine
+Slovakia	Austria
+Slovakia	Czech Republic
+Slovakia	Hungary
+Slovakia	Poland
+Slovakia	Slovakia
+Slovakia	Slovakia
+Slovakia	Ukraine
+Mexico	United States of America
+Mexico	Mexico
+Mexico	Mexico
+Mexico	Belize
+Mexico	Guatemala
+Mexico	Belize
+Mexico	Guatemala
+Mexico	United States of America
+United States of America	Mexico
+United States of America	Canada
+United States of America	Russia
+United States of America	Russia
+United States of America	United States of America
+United States of America	United States of America
+United States of America	Canada
+United States of America	Mexico
+Belize	Mexico
+Belize	Mexico
+Belize	Belize
+Belize	Belize
+Belize	Guatemala
+Belize	Guatemala
+Guatemala	Mexico
+Guatemala	Belize
+Guatemala	El Salvador
+Guatemala	Mexico
+Guatemala	Belize
+Guatemala	Guatemala
+Guatemala	Guatemala
+Guatemala	Honduras
+Guatemala	El Salvador
+Guatemala	Honduras
+Canada	United States of America
+Canada	Canada
+Canada	Canada
+Canada	United States of America
+Laos	China
+Laos	Myanmar
+Laos	Laos
+Laos	Laos
+Laos	Thailand
+Laos	Vietnam
+Laos	Cambodia
+Laos	Thailand
+Laos	Myanmar
+Laos	Vietnam
+Laos	China
+Laos	Cambodia
+Thailand	Laos
+Thailand	Malaysia
+Thailand	Myanmar
+Thailand	Laos
+Thailand	Malaysia
+Thailand	Thailand
+Thailand	Thailand
+Thailand	Cambodia
+Thailand	Myanmar
+Thailand	Cambodia
+Vietnam	Laos
+Vietnam	China
+Vietnam	Laos
+Vietnam	Vietnam
+Vietnam	Vietnam
+Vietnam	Cambodia
+Vietnam	China
+Vietnam	Cambodia
+Cambodia	Laos
+Cambodia	Thailand
+Cambodia	Vietnam
+Cambodia	Laos
+Cambodia	Thailand
+Cambodia	Vietnam
+Cambodia	Cambodia
+Cambodia	Cambodia
+Sudan	Chad
+Sudan	Central African Republic
+Sudan	Egypt
+Sudan	Eritrea
+Sudan	Libya
+Sudan	Ethiopia
+Sudan	Egypt
+Sudan	Libya
+Sudan	Sudan
+Sudan	Sudan
+Sudan	Central African Republic
+Sudan	Chad
+Sudan	Eritrea
+Sudan	Ethiopia
+Cameroon	Chad
+Cameroon	Central African Republic
+Cameroon	Gabon
+Cameroon	Equatorial Guinea
+Cameroon	Congo (Brazzaville)
+Cameroon	Equatorial Guinea
+Cameroon	Gabon
+Cameroon	Cameroon
+Cameroon	Cameroon
+Cameroon	Central African Republic
+Cameroon	Chad
+Cameroon	Nigeria
+Cameroon	Nigeria
+Cameroon	Congo (Brazzaville)
+Central African Republic	Chad
+Central African Republic	Congo (Brazzaville)
+Central African Republic	Congo (Kinshasa)
+Central African Republic	Sudan
+Central African Republic	Cameroon
+Central African Republic	Central African Republic
+Central African Republic	Central African Republic
+Central African Republic	Chad
+Central African Republic	Congo (Kinshasa)
+Central African Republic	Cameroon
+Central African Republic	Sudan
+Central African Republic	Congo (Brazzaville)
+South Africa	Mozambique
+South Africa	Lesotho
+South Africa	Mozambique
+South Africa	South Africa
+South Africa	South Africa
+South Africa	Swaziland
+South Africa	Zimbabwe
+South Africa	Namibia
+South Africa	Botswana
+South Africa	Lesotho
+South Africa	Namibia
+South Africa	Swaziland
+South Africa	Zimbabwe
+South Africa	Botswana
+Swaziland	Mozambique
+Swaziland	South Africa
+Swaziland	Mozambique
+Swaziland	South Africa
+Swaziland	Swaziland
+Swaziland	Swaziland
+Zimbabwe	Mozambique
+Zimbabwe	South Africa
+Zimbabwe	Namibia
+Zimbabwe	Mozambique
+Zimbabwe	South Africa
+Zimbabwe	Zambia
+Zimbabwe	Zimbabwe
+Zimbabwe	Zimbabwe
+Zimbabwe	Namibia
+Zimbabwe	Botswana
+Zimbabwe	Zambia
+Zimbabwe	Botswana
+Ghana	Benin
+Ghana	Burkina Faso
+Ghana	Burkina Faso
+Ghana	Ghana
+Ghana	Ghana
+Ghana	Togo
+Ghana	Ivory Coast
+Ghana	Benin
+Ghana	Ivory Coast
+Ghana	Togo
+Togo	Benin
+Togo	Burkina Faso
+Togo	Ghana
+Togo	Burkina Faso
+Togo	Ghana
+Togo	Togo
+Togo	Togo
+Togo	Benin
+Romania	Ukraine
+Romania	Hungary
+Romania	Moldova
+Romania	Romania
+Romania	Romania
+Romania	Bulgaria
+Romania	Serbia
+Romania	Hungary
+Romania	Bulgaria
+Romania	Ukraine
+Romania	Moldova
+Romania	Serbia
+Hungary	Romania
+Hungary	Slovenia
+Hungary	Austria
+Hungary	Ukraine
+Hungary	Austria
+Hungary	Croatia
+Hungary	Hungary
+Hungary	Hungary
+Hungary	Romania
+Hungary	Slovakia
+Hungary	Slovenia
+Hungary	Serbia
+Hungary	Slovakia
+Hungary	Ukraine
+Hungary	Croatia
+Hungary	Serbia
+Moldova	Romania
+Moldova	Ukraine
+Moldova	Ukraine
+Moldova	Moldova
+Moldova	Moldova
+Moldova	Romania
+Iceland	Iceland
+Iceland	Iceland
+Tunisia	Algeria
+Tunisia	Libya
+Tunisia	Algeria
+Tunisia	Libya
+Tunisia	Tunisia
+Tunisia	Tunisia
+Madagascar	Madagascar
+Madagascar	Madagascar
+Egypt	Saudi Arabia
+Egypt	Egypt
+Egypt	Egypt
+Egypt	Israel
+Egypt	Jordan
+Egypt	Libya
+Egypt	Saudi Arabia
+Egypt	Sudan
+Egypt	Jordan
+Egypt	Libya
+Egypt	Israel
+Egypt	Sudan
+Israel	Saudi Arabia
+Israel	Syria
+Israel	Lebanon
+Israel	Egypt
+Israel	Jordan
+Israel	Egypt
+Israel	Israel
+Israel	Israel
+Israel	Jordan
+Israel	Saudi Arabia
+Israel	Syria
+Israel	Lebanon
+Jordan	Saudi Arabia
+Jordan	Syria
+Jordan	Lebanon
+Jordan	Egypt
+Jordan	Iraq
+Jordan	Egypt
+Jordan	Iraq
+Jordan	Israel
+Jordan	Jordan
+Jordan	Jordan
+Jordan	Saudi Arabia
+Jordan	Syria
+Jordan	Lebanon
+Jordan	Israel
+Kuwait	Saudi Arabia
+Kuwait	Iran
+Kuwait	Iraq
+Kuwait	Iran
+Kuwait	Iraq
+Kuwait	Saudi Arabia
+Kuwait	Kuwait
+Kuwait	Kuwait
+Paraguay	Brazil
+Paraguay	Argentina
+Paraguay	Bolivia
+Paraguay	Paraguay
+Paraguay	Paraguay
+Paraguay	Argentina
+Paraguay	Brazil
+Paraguay	Bolivia
+Bolivia	Paraguay
+Bolivia	Argentina
+Bolivia	Brazil
+Bolivia	Brazil
+Bolivia	Argentina
+Bolivia	Bolivia
+Bolivia	Bolivia
+Bolivia	Peru
+Bolivia	Paraguay
+Bolivia	Peru
+Lebanon	Syria
+Lebanon	Israel
+Lebanon	Jordan
+Lebanon	Syria
+Lebanon	Lebanon
+Lebanon	Lebanon
+Lebanon	Jordan
+Lebanon	Israel
+Ireland	United Kingdom
+Ireland	Ireland
+Ireland	Ireland
+Ireland	United Kingdom
+Lesotho	South Africa
+Lesotho	Lesotho
+Lesotho	Lesotho
+Lesotho	South Africa
+Eritrea	Yemen
+Eritrea	Sudan
+Eritrea	Eritrea
+Eritrea	Eritrea
+Eritrea	Yemen
+Eritrea	Ethiopia
+Eritrea	Ethiopia
+Eritrea	Sudan
+Namibia	South Africa
+Namibia	Angola
+Namibia	South Africa
+Namibia	Zambia
+Namibia	Zimbabwe
+Namibia	Angola
+Namibia	Namibia
+Namibia	Namibia
+Namibia	Botswana
+Namibia	Zimbabwe
+Namibia	Zambia
+Namibia	Botswana
+Botswana	South Africa
+Botswana	Angola
+Botswana	Namibia
+Botswana	Zimbabwe
+Botswana	Zambia
+Botswana	South Africa
+Botswana	Zambia
+Botswana	Zimbabwe
+Botswana	Angola
+Botswana	Namibia
+Botswana	Botswana
+Botswana	Botswana
+Albania	Albania
+Albania	Albania
+Albania	Greece
+Albania	Montenegro
+Albania	Serbia
+Albania	Macedonia, The former Yugoslav Republic of
+Albania	Greece
+Albania	Macedonia, The former Yugoslav Republic of
+Albania	Montenegro
+Albania	Serbia
+Macedonia, The former Yugoslav Republic of	Albania
+Macedonia, The former Yugoslav Republic of	Bulgaria
+Macedonia, The former Yugoslav Republic of	Greece
+Macedonia, The former Yugoslav Republic of	Albania
+Macedonia, The former Yugoslav Republic of	Bulgaria
+Macedonia, The former Yugoslav Republic of	Greece
+Macedonia, The former Yugoslav Republic of	Serbia
+Macedonia, The former Yugoslav Republic of	Macedonia, The former Yugoslav Republic of
+Macedonia, The former Yugoslav Republic of	Macedonia, The former Yugoslav Republic of
+Macedonia, The former Yugoslav Republic of	Serbia
+Congo (Brazzaville)	Central African Republic
+Congo (Brazzaville)	Angola
+Congo (Brazzaville)	Congo (Kinshasa)
+Congo (Brazzaville)	Gabon
+Congo (Brazzaville)	Cameroon
+Congo (Brazzaville)	Congo (Brazzaville)
+Congo (Brazzaville)	Congo (Brazzaville)
+Congo (Brazzaville)	Congo (Kinshasa)
+Congo (Brazzaville)	Gabon
+Congo (Brazzaville)	Angola
+Congo (Brazzaville)	Cameroon
+Congo (Brazzaville)	Central African Republic
+Slovenia	Austria
+Slovenia	Croatia
+Slovenia	Hungary
+Slovenia	Italy
+Slovenia	Slovenia
+Slovenia	Slovenia
+Slovenia	Austria
+Slovenia	Hungary
+Slovenia	Italy
+Slovenia	Croatia
+Mongolia	Russia
+Mongolia	China
+Mongolia	Kazakhstan
+Mongolia	Mongolia
+Mongolia	Mongolia
+Mongolia	Russia
+Mongolia	China
+Mongolia	Kazakhstan
+Korea, North	Russia
+Korea, North	China
+Korea, North	Korea, North
+Korea, North	Korea, North
+Korea, North	Korea, South
+Korea, North	Russia
+Korea, North	Korea, South
+Korea, North	China
+Korea, South	Korea, North
+Korea, South	Korea, North
+Korea, South	Korea, South
+Korea, South	Korea, South
+Mauritius	Mauritius
+Mauritius	Mauritius
+Uruguay	Argentina
+Uruguay	Brazil
+Uruguay	Argentina
+Uruguay	Uruguay
+Uruguay	Uruguay
+Uruguay	Brazil
+Guinea Bissau (Guinea-Bissau)	Guinea Bissau (Guinea-Bissau)
+Guinea Bissau (Guinea-Bissau)	Guinea Bissau (Guinea-Bissau)
+Guinea Bissau (Guinea-Bissau)	Senegal
+Guinea Bissau (Guinea-Bissau)	Guinea
+Guinea Bissau (Guinea-Bissau)	Senegal
+Guinea Bissau (Guinea-Bissau)	Guinea
+Norway	Russia
+Norway	Norway
+Norway	Norway
+Norway	Russia
+Norway	Finland
+Norway	Sweden
+Norway	Sweden
+Norway	Finland
+Japan	Russia
+Japan	Russia
+Japan	Japan
+Japan	Japan
+Finland	Russia
+Finland	Norway
+Finland	Sweden
+Finland	Estonia
+Finland	Norway
+Finland	Russia
+Finland	Finland
+Finland	Finland
+Finland	Sweden
+Finland	Estonia
+Sweden	Norway
+Sweden	Denmark
+Sweden	Norway
+Sweden	Finland
+Sweden	Sweden
+Sweden	Sweden
+Sweden	Denmark
+Sweden	Finland
+Netherlands	Germany
+Netherlands	Netherlands
+Netherlands	Netherlands
+Netherlands	Germany
+Netherlands	Belgium
+Netherlands	Belgium
+Denmark	Germany
+Denmark	Sweden
+Denmark	Germany
+Denmark	Denmark
+Denmark	Denmark
+Denmark	Sweden
+New Zealand	New Zealand
+New Zealand	New Zealand
+Angola	Congo (Brazzaville)
+Angola	Congo (Kinshasa)
+Angola	Zambia
+Angola	Angola
+Angola	Angola
+Angola	Namibia
+Angola	Botswana
+Angola	Congo (Kinshasa)
+Angola	Namibia
+Angola	Zambia
+Angola	Botswana
+Angola	Congo (Brazzaville)
+Cuba	Cuba
+Cuba	Cuba
+Taiwan	China
+Taiwan	Taiwan
+Taiwan	Taiwan
+Taiwan	China
+Sri Lanka	India
+Sri Lanka	Sri Lanka
+Sri Lanka	Sri Lanka
+Sri Lanka	India
+Gambia	Senegal
+Gambia	Gambia
+Gambia	Gambia
+Gambia	Senegal
+Australia	Papua New Guinea
+Australia	Australia
+Australia	Australia
+Australia	Papua New Guinea
+Cyprus	Cyprus
+Cyprus	Cyprus
+Ethiopia	Eritrea
+Ethiopia	Kenya
+Ethiopia	Sudan
+Ethiopia	Eritrea
+Ethiopia	Ethiopia
+Ethiopia	Ethiopia
+Ethiopia	Kenya
+Ethiopia	Sudan
+Gabon	Congo (Brazzaville)
+Gabon	Equatorial Guinea
+Gabon	Gabon
+Gabon	Gabon
+Gabon	Cameroon
+Gabon	Equatorial Guinea
+Gabon	Cameroon
+Gabon	Congo (Brazzaville)
+Equatorial Guinea	Gabon
+Equatorial Guinea	Equatorial Guinea
+Equatorial Guinea	Equatorial Guinea
+Equatorial Guinea	Gabon
+Equatorial Guinea	Cameroon
+Equatorial Guinea	Cameroon
+Trinidad and Tobago	Venezuela
+Trinidad and Tobago	Venezuela
+Trinidad and Tobago	Trinidad and Tobago
+Trinidad and Tobago	Trinidad and Tobago
+Hong Kong S.A.R.	China
+Hong Kong S.A.R.	Hong Kong S.A.R.
+Hong Kong S.A.R.	Hong Kong S.A.R.
+Hong Kong S.A.R.	China
+Sao Tome and Principe	Sao Tome and Principe
+Sao Tome and Principe	Sao Tome and Principe
+Seychelles	Seychelles
+Seychelles	Seychelles
+Jamaica	Jamaica
+Jamaica	Jamaica
+Malta	Malta
+Malta	Malta

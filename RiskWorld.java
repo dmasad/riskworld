@@ -25,6 +25,9 @@ public class RiskWorld extends SimState {
 	int worldHeight = 400;
 	int worldWidth = 900;
 	
+	long minEdgeToDisplay = 40000000; // Min export volume to show on the map.
+									// 40M captures ~90% of all trade.
+	
 	// Storage
 	HashMap<String,Country> allCountries;
 	Network tradeNetwork;
@@ -87,7 +90,7 @@ public class RiskWorld extends SimState {
 			while ((line = reader.readLine()) != null) {
 				String[] row = line.split("\t");
 				String name = row[0];
-				double instability = Double.parseDouble(row[1]);
+				double instability = Double.parseDouble(row[3]);
 				Country newCountry = new Country(this, name, instability);
 				allCountries.put(name, newCountry);
 				schedule.scheduleRepeating(newCountry);
@@ -161,6 +164,7 @@ public class RiskWorld extends SimState {
 				Country target = allCountries.get(trgt);
 				if (source != null && target != null) {
 					tradeNetwork.addEdge(source, target, val);
+					if (val < minEdgeToDisplay) continue; // Don't display if too small.
 					networkMap.addGeometry(util.makeGreatCircleLine(source.getPoint(), target.getPoint()));
 				}
 				else System.out.println("Missing edge: " + line);

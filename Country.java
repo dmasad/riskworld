@@ -32,7 +32,8 @@ public class Country implements Steppable {
 		this.world = world;
 		this.name = name;
 		// Instability=100 <=> Approx. 99% chance of crisis occurring once in 24 periods.
-		this.instability = instability/100.0 * 0.18;
+		//this.instability = (instability/10.0) * 0.18;
+		this.instability = (instability/10.0) * 0.07; // 60 periods.
 	}
 	
 	
@@ -139,5 +140,12 @@ public class Country implements Steppable {
 	public double getCrisisLength() {return crisisLength;}
 	public void setCrisisLength(double length) {crisisLength = length;}
 	public double getLocalRatio() {return localRatio;}
+	
+	public double getInstability() {
+		return instability/0.18 * 10;
+	}
+	public void setInstability(double instability) {
+		this.instability = (instability/10.0) * 0.18;
+	}
 
 }

@@ -88,10 +88,10 @@ public class RiskWorldWithUI extends GUIState {
 		capitalPortrayal.setPortrayalForAll(new OvalPortrayal2D(Color.BLACK, 4.0));
 		
 		netPortrayal.setField(world.networkMap);
-		netPortrayal.setPortrayalForAll(new CustomPortrayals.EdgePortrayal(Color.BLACK, 10));
+		netPortrayal.setPortrayalForAll(new CustomPortrayals.EdgePortrayal(Color.BLACK, 20));
 		
 		adjPortrayal.setField(world.adjNetMap);
-		adjPortrayal.setPortrayalForAll(new CustomPortrayals.EdgePortrayal(Color.BLACK, 30));
+		adjPortrayal.setPortrayalForAll(new CustomPortrayals.EdgePortrayal(Color.BLACK, 10));
 		
 		display.setBackdrop(new Color(0,35,100));	
 	}

@@ -19,12 +19,21 @@ public class Country implements Steppable {
 	
 	double totalImports;
 	double totalExports;
+	
+	double totalProduction;
+	double excessCapacity;
+	
 	double localRatio;
+	boolean supplyShock = false;
 	
 	// Crisis model
 	double instability;
 	boolean inCrisis = false;
 	double crisisLength = -1;
+	
+	// Supply shock response model
+	
+	
 	
 	public Country() {;}
 	
@@ -71,14 +80,14 @@ public class Country implements Steppable {
 		Bag inEdges = network.getEdgesIn(this);
 		for (Object o : inEdges) {
 			Edge e = (Edge)o;
-			totalImports += (Long)e.getInfo();
+			totalImports += ((TradeEdge)e.getInfo()).baseSize;
 		}
 		
 		totalExports = 0;
 		Bag outEdges = network.getEdgesOut(this);
 		for (Object o : outEdges) {
 			Edge e = (Edge)o;
-			totalExports += (Long)e.getInfo();
+			totalExports +=((TradeEdge)e.getInfo()).baseSize;
 		}
 		
 	}
@@ -92,11 +101,14 @@ public class Country implements Steppable {
 			Country neighbor = null;
 			if (e.getFrom().equals(this)) neighbor = (Country)e.getTo();
 			if (e.getTo().equals(this)) neighbor = (Country)e.getFrom();
-			if (!neighbor.inCrisis) currentImports += (Long)e.getInfo();
+			if (!neighbor.inCrisis) currentImports += ((TradeEdge)e.getInfo()).baseSize;
 		}
 		localRatio = totalImports/currentImports;
 	}
 	
+	
+	// BEHAVIORS
+	// ==============================================================================
 	
 	/**
 	 * Randomly check whether country enters crisis or not.

@@ -163,7 +163,8 @@ public class RiskWorld extends SimState {
 				Country source = allCountries.get(src);
 				Country target = allCountries.get(trgt);
 				if (source != null && target != null) {
-					tradeNetwork.addEdge(source, target, val);
+					TradeEdge newEdge = new TradeEdge(source, target, val);
+					tradeNetwork.addEdge(source, target, newEdge);
 					if (val < minEdgeToDisplay) continue; // Don't display if too small.
 					networkMap.addGeometry(util.makeGreatCircleLine(source.getPoint(), target.getPoint()));
 				}

@@ -24,9 +24,10 @@ public class RiskWorld extends SimState {
 	// Model Parameters:
 	int worldHeight = 400;
 	int worldWidth = 900;
-	
-	long minEdgeToDisplay = 40000000; // Min export volume to show on the map.
-									// 40M captures ~90% of all trade.
+	// Parameters
+	double minEdgeToDisplay = 40000000; // Min export volume to show on the map.
+										// 40M captures ~90% of all trade.
+	double shockThreshold = 1.5; // The demand/supply threshold required for a supply shock. 
 	
 	// Storage
 	HashMap<String,Country> allCountries;
@@ -51,6 +52,8 @@ public class RiskWorld extends SimState {
 	String capitalPath = "world_capitals.shp";
 	
 	Utilities util = new Utilities();
+	
+	boolean verbose = false; // Boolean to govern whether or not to display console updates.
 	
 	public RiskWorld(long seed) {
 		super(seed);
@@ -159,7 +162,7 @@ public class RiskWorld extends SimState {
 				String[] row = line.split("\t");
 				String src = row[0];
 				String trgt = row[1];
-				long val = Long.parseLong(row[2]); //Integer.parseInt(row[2]);
+				double val = Long.parseLong(row[2]); //Integer.parseInt(row[2]);
 				Country source = allCountries.get(src);
 				Country target = allCountries.get(trgt);
 				if (source != null && target != null) {
@@ -168,7 +171,7 @@ public class RiskWorld extends SimState {
 					if (val < minEdgeToDisplay) continue; // Don't display if too small.
 					networkMap.addGeometry(util.makeGreatCircleLine(source.getPoint(), target.getPoint()));
 				}
-				else System.out.println("Missing edge: " + line);
+				else if (verbose) System.out.println("Missing edge: " + line);
 			}
 			reader.close();
 			System.out.println("Network loaded!");

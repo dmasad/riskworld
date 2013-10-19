@@ -10,17 +10,18 @@ public class TradeEdge {
 	Country importer;
 
 	// The amount of oil exported in the baseline, and currently
-	long baseSize;
-	long currentSize;
+	double baseSize;
+	double currentSize;
 	
 	// The fraction this edge represents of the exporter's and importer's totals.
 	double exportFraction;
 	double importFraction;
 	
-	TradeEdge(Country src, Country dest, long size) {
+	TradeEdge(Country src, Country dest, double size) {
 		exporter = src;
 		importer = dest;
 		baseSize = size;
+		currentSize = baseSize;
 	}	
 
 }

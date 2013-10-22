@@ -2,11 +2,8 @@ package riskworld;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
 import java.net.URL;
 import java.util.HashMap;
 
@@ -15,11 +12,11 @@ import com.vividsolutions.jts.geom.Envelope;
 import sim.engine.SimState;
 import sim.field.geo.GeomVectorField;
 import sim.field.network.Network;
-import sim.field.network.stats.NetworkStatistics;
 import sim.io.geo.ShapeFileImporter;
 import sim.util.Bag;
 import sim.util.geo.MasonGeometry;
 
+@SuppressWarnings("serial")
 public class RiskWorld extends SimState {
 	// Model Parameters:
 	int worldHeight = 400;
@@ -99,6 +96,7 @@ public class RiskWorld extends SimState {
 				schedule.scheduleRepeating(newCountry);
 			}
 			System.out.print("Done!\n");
+			reader.close();
 			
 		} catch (Exception e) {
 			System.out.println("\nError loading country file!");
@@ -147,6 +145,7 @@ public class RiskWorld extends SimState {
 				country.capital = g;
 			}
 		}
+		System.out.print("Done!\n");
 	}
 	
 	/**
@@ -209,6 +208,7 @@ public class RiskWorld extends SimState {
 				String[] row = line.split("\t");
 				String srcName = row[0];
 				String trgtName = row[1];
+				if (srcName.equals(trgtName)) continue;
 				Country source = allCountries.get(srcName);
 				Country target = allCountries.get(trgtName);
 				adjNetwork.addEdge(source, target, null);

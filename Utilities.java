@@ -1,14 +1,9 @@
 package riskworld;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
+
 import java.io.FileWriter;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.LineString;
@@ -137,7 +132,7 @@ public class Utilities {
 		double lat2 = end.y;
 		double lon2 = end.x;
 		double dLon = lon2 - lon1;
-		double dLat = lat2 - lat1;
+		//double dLat = lat2 - lat1;
 		
 		// Get midpoints:
 		double Bx = cos(lat2) * cos(dLon);

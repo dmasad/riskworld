@@ -8,7 +8,6 @@ import sim.display.Console;
 import sim.display.Controller;
 import sim.display.Display2D;
 import sim.display.GUIState;
-import sim.portrayal.geo.GeomPortrayal;
 import sim.portrayal.geo.GeomVectorFieldPortrayal;
 import sim.portrayal.simple.OvalPortrayal2D;
 import sim.util.media.chart.TimeSeriesChartGenerator;
@@ -32,6 +31,7 @@ public class RiskWorldWithUI extends GUIState {
 		super(new RiskWorld(System.currentTimeMillis()));
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void init(Controller controller) {
 		super.init(controller);
 		RiskWorld world = (RiskWorld)state;
@@ -39,7 +39,7 @@ public class RiskWorldWithUI extends GUIState {
 		
 		display.attach(mapPortrayal, "Map");
 		display.attach(crisisPortrayal, "Crises");
-		display.attach(capitalPortrayal, "Capitals");
+		//display.attach(capitalPortrayal, "Capitals");
 		display.attach(netPortrayal, "Trade Network");
 		display.attach(adjPortrayal, "Adjacency map");
 		
@@ -56,7 +56,7 @@ public class RiskWorldWithUI extends GUIState {
 		
 		display.attach(mapPortrayal, "Map");
 		display.attach(crisisPortrayal, "Crises");
-		display.attach(capitalPortrayal, "Capitals");
+		//display.attach(capitalPortrayal, "Capitals");
 		display.attach(netPortrayal, "Trade Network");
 		display.attach(adjPortrayal, "Adjacency map");
 		
@@ -84,8 +84,9 @@ public class RiskWorldWithUI extends GUIState {
 		Color crisis = new Color(250, 0, 0, 60);
 		crisisPortrayal.setPortrayalForAll(new CustomPortrayals.CrisisPortrayal(normal, crisis));
 		
-		capitalPortrayal.setField(world.capitals);
-		capitalPortrayal.setPortrayalForAll(new OvalPortrayal2D(Color.BLACK, 4.0));
+		
+		//capitalPortrayal.setField(world.capitals);
+		//capitalPortrayal.setPortrayalForAll(new OvalPortrayal2D(Color.BLACK, 4.0));
 		
 		netPortrayal.setField(world.networkMap);
 		netPortrayal.setPortrayalForAll(new CustomPortrayals.EdgePortrayal(Color.BLACK, 20));

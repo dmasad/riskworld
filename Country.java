@@ -9,6 +9,7 @@ import sim.field.network.Network;
 import sim.util.Bag;
 import sim.util.geo.MasonGeometry;
 
+@SuppressWarnings("serial")
 public class Country implements Steppable {
 	
 	RiskWorld world;
@@ -33,6 +34,7 @@ public class Country implements Steppable {
 	double instability;
 	boolean inCrisis = false;
 	double crisisLength = -1;
+	int crisisCheckCounter; // Check how many times above baseline the country was crisis-checked
 	
 	// Supply shock response model
 	boolean increasingProduction;
@@ -46,8 +48,9 @@ public class Country implements Steppable {
 		this.name = name;
 		// Instability=100 <=> Approx. 99% chance of crisis occurring once in 24 periods.
 		//this.instability = (instability/10.0) * 0.18;
-		this.instability = (instability/10.0) * 0.07 * 0.5; // 60 periods.
+		this.instability = (instability/10.0) * 0.07; // 60 periods.
 		ratioSeries = new XYSeries(name + " Supply/Demand Ratio");
+		crisisCheckCounter = 0;
 	}
 	
 	
@@ -144,6 +147,7 @@ public class Country implements Steppable {
 	 * Randomly determine whether country enters crisis or not.
 	 */
 	public void crisisTest() {
+		crisisCheckCounter++;
 		if(!inCrisis && world.random.nextBoolean(instability)) {
 			inCrisis = true;
 			crisisLength = Math.ceil(4 * Math.exp(world.random.nextGaussian()));
@@ -155,14 +159,18 @@ public class Country implements Steppable {
 	 */
 	public void percolate() {
 		Bag neighbors = world.adjNetwork.getEdgesOut(this);
+		Bag checked = new Bag();
 		for (Object o : neighbors) {
 			Edge e = (Edge)o;
-			Country neighbor;
+			Country neighbor = null;
 			if (e.getFrom().equals(this)) neighbor = (Country)e.getTo();
 			else if (e.getTo().equals(this)) neighbor = (Country)e.getFrom();
 			else System.out.println("Danger!!");
-			Country c = (Country)e.getTo();
-			c.crisisTest();
+			if (checked.contains(neighbor)) continue;
+			neighbor.crisisTest();
+			checked.add(neighbor);
+			//Country c = (Country)e.getTo();
+			//c.crisisTest();
 		}
 	}
 	
@@ -230,6 +238,7 @@ public class Country implements Steppable {
 	public void setInCrisis(boolean crisis) {inCrisis = crisis;}
 	public double getCrisisLength() {return crisisLength;}
 	public void setCrisisLength(double length) {crisisLength = length;}
+	public int getCrisisCheckCounter() {return crisisCheckCounter;}
 	public double getLocalRatio() {return localRatio;}
 	
 	public double getInstability() {

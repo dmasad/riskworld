@@ -10,6 +10,7 @@ import sim.engine.Steppable;
  * @author dmasad
  *
  */
+@SuppressWarnings("serial")
 public class TradeMonitor implements Steppable {
 	RiskWorld world;
 	

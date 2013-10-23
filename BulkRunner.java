@@ -28,7 +28,7 @@ public class BulkRunner {
 			globalRatio = convertXYSeries(tm.globalRatio);
 			localRatios = new HashMap<String, double[]>();
 			for (Country c : world.allCountries.values())
-				localRatios.put(c.name, convertXYSeries(c.ratioSeries));
+				localRatios.put(c.name, convertXYSeries(c.supplyRatioSeries));
 		}
 		
 		/**

@@ -26,8 +26,8 @@ public class Country implements Steppable {
 	double totalProduction;
 	double totalCapacity;
 	
-	double localRatio;
-	XYSeries ratioSeries;
+	double supplyRatio;
+	XYSeries supplyRatioSeries;
 	boolean supplyShock = false;
 	
 	// Crisis model
@@ -49,7 +49,7 @@ public class Country implements Steppable {
 		// Instability=100 <=> Approx. 99% chance of crisis occurring once in 24 periods.
 		//this.instability = (instability/10.0) * 0.18;
 		this.instability = (instability/10.0) * 0.07; // 60 periods.
-		ratioSeries = new XYSeries(name + " Supply/Demand Ratio");
+		supplyRatioSeries = new XYSeries(name + " Supply/Demand Ratio");
 		crisisCheckCounter = 0;
 	}
 	
@@ -129,14 +129,14 @@ public class Country implements Steppable {
 			if (e.getTo().equals(this)) neighbor = (Country)e.getFrom();
 			if (!neighbor.inCrisis) currentImports += ((TradeEdge)e.getInfo()).currentSize;
 		}
-		localRatio = totalImports/currentImports;
-		if (localRatio > world.shockThreshold) {
+		supplyRatio = totalImports/currentImports;
+		if (supplyRatio > world.shockThreshold) {
 			supplyShock = true;
 			if (world.verbose) System.out.println(name + " experiencing supply shock");
 		}
 		else 
 			supplyShock = false;
-		ratioSeries.add(world.schedule.getSteps(), localRatio);
+		supplyRatioSeries.add(world.schedule.getSteps(), supplyRatio);
 	}
 	
 	
@@ -239,7 +239,7 @@ public class Country implements Steppable {
 	public double getCrisisLength() {return crisisLength;}
 	public void setCrisisLength(double length) {crisisLength = length;}
 	public int getCrisisCheckCounter() {return crisisCheckCounter;}
-	public double getLocalRatio() {return localRatio;}
+	public double getLocalRatio() {return supplyRatio;}
 	
 	public double getInstability() {
 		return instability/0.18 * 10;
@@ -247,6 +247,6 @@ public class Country implements Steppable {
 	public void setInstability(double instability) {
 		this.instability = (instability/10.0) * 0.18;
 	}
-	public XYSeries getRatioSeries() {return ratioSeries;}
+	public XYSeries getRatioSeries() {return supplyRatioSeries;}
 
 }

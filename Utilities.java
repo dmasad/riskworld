@@ -22,7 +22,11 @@ import sim.util.geo.MasonGeometry;
 public class Utilities {
 
 	WKTReader rdr = new WKTReader();
+	RiskWorld world;
 	
+	public Utilities(RiskWorld w) {
+		world = w;
+	}
 	
 	
 	/**
@@ -72,6 +76,17 @@ public class Utilities {
 		}
 		return new MasonGeometry(line);
 	}
+	
+	public double randomPowerLaw(double x0, double x1, double alpha) {
+		double r = world.random.nextDouble();
+		double a = Math.pow(x1, (alpha+1));
+		double b = Math.pow(x0, (alpha+1));
+		double c = Math.pow(x0, (alpha+1));
+		double d = (a -b)*r + c;
+		double n = Math.pow(d, (1.0/(alpha+1)));
+		return n;
+	}
+	
 	
 	
 	// GREAT CIRCLE DRAWING

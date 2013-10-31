@@ -27,7 +27,9 @@ public class Country implements Steppable {
 	double totalCapacity;
 	
 	double supplyRatio;
+	double demandRatio;
 	XYSeries supplyRatioSeries;
+	XYSeries demandRatioSeries;
 	boolean supplyShock = false;
 	
 	// Crisis model
@@ -46,10 +48,10 @@ public class Country implements Steppable {
 	public Country(RiskWorld world, String name, double instability) {
 		this.world = world;
 		this.name = name;
-		// Instability=100 <=> Approx. 99% chance of crisis occurring once in 24 periods.
-		//this.instability = (instability/10.0) * 0.18;
-		this.instability = (instability/10.0) * 0.07; // 60 periods.
-		supplyRatioSeries = new XYSeries(name + " Supply/Demand Ratio");
+		// Instability=100 <=> Approx. 80% chance of crisis occurring once in 24 tests.
+		this.instability = (instability/10.0) * 0.065; 
+		supplyRatioSeries = new XYSeries(name + "Import Supply/Demand Ratio");
+		demandRatioSeries = new XYSeries(name + "Export Supply/Demand Ratio");
 		crisisCheckCounter = 0;
 	}
 	
@@ -73,7 +75,7 @@ public class Country implements Steppable {
 		world = (RiskWorld)state;
 		// Check whether to enter or leave crisis.
 		if (inCrisis) {
-			percolate();
+			//percolate();
 			crisisLength--;
 			if (crisisLength < 0) inCrisis = false;
 		}
@@ -118,15 +120,14 @@ public class Country implements Steppable {
 		
 	}
 	
-	public void updateRatio() {
+	public void updateRatios() {
 		Network network = world.tradeNetwork;
+		// Get import edges and total countries not in crisis.
 		Bag inEdges = network.getEdgesIn(this);
 		double currentImports = 0;
 		for (Object o : inEdges) {
 			Edge e = (Edge)o;
-			Country neighbor = null;
-			if (e.getFrom().equals(this)) neighbor = (Country)e.getTo();
-			if (e.getTo().equals(this)) neighbor = (Country)e.getFrom();
+			Country neighbor = (Country)e.getFrom();
 			if (!neighbor.inCrisis) currentImports += ((TradeEdge)e.getInfo()).currentSize;
 		}
 		supplyRatio = totalImports/currentImports;
@@ -137,6 +138,18 @@ public class Country implements Steppable {
 		else 
 			supplyShock = false;
 		supplyRatioSeries.add(world.schedule.getSteps(), supplyRatio);
+		
+		// Get export edges and total countries not in crisis
+		// Assume countries in crisis reduce their oil demand by an arbitrary 50%
+		Bag outEdges = network.getEdgesOut(this);
+		double currentExports = 0;
+		for (Object o : outEdges) {
+			Edge e = (Edge)o;
+			Country neighbor = (Country)e.getTo();
+			if (!neighbor.inCrisis) currentExports += ((TradeEdge)e.getInfo()).currentSize;
+		}
+		demandRatio = currentExports/totalExports;
+		demandRatioSeries.add(world.schedule.getSteps(), demandRatio);
 	}
 	
 	
@@ -150,14 +163,16 @@ public class Country implements Steppable {
 		crisisCheckCounter++;
 		if(!inCrisis && world.random.nextBoolean(instability)) {
 			inCrisis = true;
-			crisisLength = Math.ceil(4 * Math.exp(world.random.nextGaussian()));
+			if (world.contagion) spreadContagion();
+			//crisisLength = Math.ceil(4 * Math.exp(world.random.nextGaussian()));
+			crisisLength = Math.ceil(world.util.randomPowerLaw(1, 800, -1.37));
 		}
 	}
 	
 	/**
 	 * Propagate a crisis to neighboring countries.
 	 */
-	public void percolate() {
+	public void spreadContagion() {
 		Bag neighbors = world.adjNetwork.getEdgesOut(this);
 		Bag checked = new Bag();
 		for (Object o : neighbors) {
@@ -242,10 +257,11 @@ public class Country implements Steppable {
 	public double getLocalRatio() {return supplyRatio;}
 	
 	public double getInstability() {
-		return instability/0.18 * 10;
+		return instability;
+		//return instability/0.065 * 10;
 	}
 	public void setInstability(double instability) {
-		this.instability = (instability/10.0) * 0.18;
+		this.instability = (instability/10.0) * 0.065;
 	}
 	public XYSeries getRatioSeries() {return supplyRatioSeries;}
 

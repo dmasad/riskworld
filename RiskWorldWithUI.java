@@ -25,7 +25,9 @@ public class RiskWorldWithUI extends GUIState {
 	GeomVectorFieldPortrayal adjPortrayal = new GeomVectorFieldPortrayal();
 	
 	// Charts:
-	JFrame globalPriceChartFrame;
+	JFrame globalSupplyChartFrame;
+	JFrame globalDemandChartFrame;
+	JFrame globalRatioChartFrame;
 	
 	public RiskWorldWithUI() {
 		super(new RiskWorld(System.currentTimeMillis()));
@@ -60,9 +62,9 @@ public class RiskWorldWithUI extends GUIState {
 		display.attach(netPortrayal, "Trade Network");
 		display.attach(adjPortrayal, "Adjacency map");
 		
-		if (globalPriceChartFrame != null) {
-			controller.unregisterFrame(globalPriceChartFrame);
-			globalPriceChartFrame.dispose();
+		if (globalSupplyChartFrame != null) {
+			controller.unregisterFrame(globalSupplyChartFrame);
+			globalSupplyChartFrame.dispose();
 		}
 		
 		setupPortrayals();
@@ -98,18 +100,46 @@ public class RiskWorldWithUI extends GUIState {
 	}
 	
 	public void setupCharts() {
-		
+		// Supply Ratio Chart
 		TimeSeriesChartGenerator chartGen = new TimeSeriesChartGenerator();
-		chartGen.setTitle("Global Demand/Supply Ratio");
+		chartGen.setTitle("Total Demand / Current Supply");
 		chartGen.setXAxisLabel("Steps");
 		chartGen.setYAxisLabel("Ratio");
-		chartGen.addSeries(((RiskWorld)state).tm.globalRatio, null);
+		chartGen.addSeries(((RiskWorld)state).tm.globalSupplyRatio, null);
 		
-		globalPriceChartFrame = chartGen.createFrame();
-		globalPriceChartFrame.setTitle("Price proxy");
-		globalPriceChartFrame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-		controller.registerFrame(globalPriceChartFrame);
+		globalSupplyChartFrame = chartGen.createFrame();
+		globalSupplyChartFrame.setTitle("Total Demand / Current Supply");
+		globalSupplyChartFrame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+		controller.registerFrame(globalSupplyChartFrame);
+		
+		// Demand ratio chart
+		TimeSeriesChartGenerator chartGen2 = new TimeSeriesChartGenerator();
+		chartGen2.setTitle("Current Demand / Total Supply");
+		chartGen2.setXAxisLabel("Steps");
+		chartGen2.setYAxisLabel("Ratio");
+		chartGen2.addSeries(((RiskWorld)state).tm.globalDemandRatio, null);
+
+		globalDemandChartFrame = chartGen2.createFrame();
+		globalDemandChartFrame.setTitle("Current Demand / Total Supply");
+		globalDemandChartFrame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+		controller.registerFrame(globalDemandChartFrame);
+		
+		// Overall ratio chart:
+		TimeSeriesChartGenerator chartGen3 = new TimeSeriesChartGenerator();
+		chartGen3.setTitle("Current Demand / Current Supply");
+		chartGen3.setXAxisLabel("Steps");
+		chartGen3.setYAxisLabel("Ratio");
+		chartGen3.addSeries(((RiskWorld)state).tm.globalOverallRatio, null);
+
+		globalRatioChartFrame = chartGen3.createFrame();
+		globalRatioChartFrame.setTitle("Current Demand / Current Supply");
+		globalRatioChartFrame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+		controller.registerFrame(globalRatioChartFrame);
+		
 	}
+	
+	public Object getSimulationInspectedObject() { return state; }
+
 	
 	public static void main(String[] args) {
 		RiskWorldWithUI sim = new RiskWorldWithUI();

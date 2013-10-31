@@ -19,16 +19,27 @@ public class BulkRunner {
 	 *
 	 */
 	static class ModelOutput {
-		double globalRatio[];
-		HashMap<String, double[]> localRatios;
+		boolean contagion;
+		double globalSupplyRatio[];
+		double globalDemandRatio[];
+		double globalOverallRatio[];
+		HashMap<String, double[]> supplyRatios;
+		HashMap<String, double[]> demandRatios;
 		
 		ModelOutput(RiskWorld world) {
+			contagion = world.contagion;
 			TradeMonitor tm = world.tm;
 			int ticks = (int)world.schedule.getSteps();
-			globalRatio = convertXYSeries(tm.globalRatio);
-			localRatios = new HashMap<String, double[]>();
-			for (Country c : world.allCountries.values())
-				localRatios.put(c.name, convertXYSeries(c.supplyRatioSeries));
+			globalSupplyRatio = convertXYSeries(tm.globalSupplyRatio);
+			globalDemandRatio = convertXYSeries(tm.globalDemandRatio);
+			globalOverallRatio = convertXYSeries(tm.globalOverallRatio);
+			supplyRatios = new HashMap<String, double[]>();
+			demandRatios = new HashMap<String, double[]>();
+			for (Country c : world.allCountries.values()) {
+				supplyRatios.put(c.name, convertXYSeries(c.supplyRatioSeries));
+				demandRatios.put(c.name, convertXYSeries(c.demandRatioSeries));
+			}
+			
 		}
 		
 		/**
@@ -63,13 +74,14 @@ public class BulkRunner {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int n = 50; // Number of model runs:
+		int n = 10; // Number of model runs:
+		int numSteps = 60;
 		Gson gson = new Gson();
 		ModelOutput[] outputs = new ModelOutput[n];
 		RiskWorld w = new RiskWorld(System.currentTimeMillis());
 		for (int i=0; i<n; i++) {
 			w.start();
-			for (int t=0; t<60; t++)
+			for (int t=0; t<numSteps; t++)
 				w.schedule.step(w);
 			outputs[i] = new ModelOutput(w);
 		}

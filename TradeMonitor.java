@@ -17,7 +17,9 @@ public class TradeMonitor implements Steppable {
 	// Worldwide supply-demand
 	double totalSupply = 0;
 	double totalDemand = 0;
-	XYSeries globalRatio = new XYSeries("Demand/Supply Ratio");
+	XYSeries globalSupplyRatio = new XYSeries("Total Demand/ Current Supply");
+	XYSeries globalDemandRatio = new XYSeries("Current Demand / Total Supply");
+	XYSeries globalOverallRatio = new XYSeries("Current Demand / Current Supply");
 	
 	/**
 	 * Constructor; assumes that the rest of the model has already been set up.
@@ -33,11 +35,22 @@ public class TradeMonitor implements Steppable {
 	
 	public void step(SimState state) {
 		double currentSupply = 0;
+		double currentDemand = 0;
 		for (Country c : world.allCountries.values()) {
-			if (!c.inCrisis) currentSupply += c.totalExports;
-			c.updateRatio();
+			if (!c.inCrisis) {
+				currentSupply += c.totalExports;
+				currentDemand += c.totalImports;
+			}
+			c.updateRatios();
 		}
+		long step = world.schedule.getSteps();
 		double ratio = totalDemand/currentSupply;
-		globalRatio.add(world.schedule.getSteps(), ratio);
+		globalSupplyRatio.add(step, ratio);
+		
+		ratio = currentDemand/totalSupply;
+		globalDemandRatio.add(step, ratio);
+		
+		ratio = currentDemand/currentSupply;
+		globalOverallRatio.add(step, ratio);
 	}
 }

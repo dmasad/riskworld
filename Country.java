@@ -50,8 +50,6 @@ public class Country implements Steppable {
 		this.name = name;
 		// Instability=100 <=> Approx. 80% chance of crisis occurring once in 24 tests.
 		this.instability = (instability/10.0) * 0.065; 
-		supplyRatioSeries = new XYSeries(name + "Import Supply/Demand Ratio");
-		demandRatioSeries = new XYSeries(name + "Export Supply/Demand Ratio");
 		crisisCheckCounter = 0;
 	}
 	
@@ -81,10 +79,14 @@ public class Country implements Steppable {
 		}
 		else crisisTest();
 		
-		increaseProductionCheck();
+		if (world.assistance) increaseProductionCheck();
 	}
 	
 	public void initIndustry() {
+		inCrisis = false;
+		supplyRatioSeries = new XYSeries(name + "Import Supply/Demand Ratio");
+		demandRatioSeries = new XYSeries(name + "Export Supply/Demand Ratio");
+		
 		Network network = world.tradeNetwork;
 		// Imports:
 		totalImports = 0;
@@ -140,7 +142,6 @@ public class Country implements Steppable {
 		supplyRatioSeries.add(world.schedule.getSteps(), supplyRatio);
 		
 		// Get export edges and total countries not in crisis
-		// Assume countries in crisis reduce their oil demand by an arbitrary 50%
 		Bag outEdges = network.getEdgesOut(this);
 		double currentExports = 0;
 		for (Object o : outEdges) {

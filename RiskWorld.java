@@ -22,10 +22,12 @@ public class RiskWorld extends SimState {
 	int worldHeight = 400;
 	int worldWidth = 900;
 	// Parameters
+	// ==================================
 	double minEdgeToDisplay = 40000000; // Min export volume to show on the map.
 										// 40M captures ~90% of all trade.
 	double shockThreshold = 2; // The demand/supply threshold required for a supply shock.
 	boolean contagion = false; // Flag to determine whether or not conflict contagion is active.
+	boolean assistance = true;
 	
 	// Storage
 	HashMap<String,Country> allCountries;
@@ -70,7 +72,8 @@ public class RiskWorld extends SimState {
 	
 	public void start() {
 		super.start();
-		schedule.clear();
+		//schedule.clear();
+		schedule.reset();
 		for (Country c : allCountries.values()) {
 			schedule.scheduleRepeating(c);
 			c.initIndustry();
@@ -230,6 +233,9 @@ public class RiskWorld extends SimState {
 	
 	public boolean getContagion() {return contagion;}
 	public void setContagion(boolean flag) {contagion = flag;}
+	public boolean getAssistance() { return assistance; }
+	public void setAssistance(boolean assistance) { this.assistance = assistance;}
+
 
 	/**
 	 * Main function

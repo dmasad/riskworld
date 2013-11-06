@@ -20,6 +20,7 @@ public class BulkRunner {
 	 */
 	static class ModelOutput {
 		boolean contagion;
+		boolean assistance;
 		double globalSupplyRatio[];
 		double globalDemandRatio[];
 		double globalOverallRatio[];
@@ -28,6 +29,7 @@ public class BulkRunner {
 		
 		ModelOutput(RiskWorld world) {
 			contagion = world.contagion;
+			assistance = world.assistance;
 			TradeMonitor tm = world.tm;
 			int ticks = (int)world.schedule.getSteps();
 			globalSupplyRatio = convertXYSeries(tm.globalSupplyRatio);
@@ -74,7 +76,7 @@ public class BulkRunner {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int n = 10; // Number of model runs:
+		int n = 100; // Number of model runs:
 		int numSteps = 60;
 		Gson gson = new Gson();
 		ModelOutput[] outputs = new ModelOutput[n];
@@ -84,6 +86,7 @@ public class BulkRunner {
 			for (int t=0; t<numSteps; t++)
 				w.schedule.step(w);
 			outputs[i] = new ModelOutput(w);
+			if (i%20 == 0) System.out.println(i);
 		}
 		System.out.println("Exporting data...");
 		String outJson = gson.toJson(outputs);

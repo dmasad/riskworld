@@ -1,0 +1,10 @@
+
+Simulating International Energy Security
+
+Energy security is critical to both developed countries and developing ones, as the world's energy demand continues to grow in the face of increasing scarcity. Much of the current analysis of energy security is driven by heuristics and static indicators, and does not incorporate the complexity of the international system. 
+
+In this poster, I present an initial implementation of a novel agent-based model linking energy security to inter- and intra-state crises and conflicts. The model can generate ranges of notional near-future trajectories of global and local energy security, indicating countries at high and low risk. It also explores the emergent consequences of conflict contagion, temporary production increases and varying levels of stockpiles. It can also be used to explore different scenarios, from particular crises to realignments of major trade relationships. 
+
+The agents in the model are geospatially-located countries, acting on a monthly timescale. Countries experience exogenous crises based on probabilities derived from the work of the Political Instability Task Force [[CITE]]. They are linked geographically, and by oil trade relationships obtained via the COMTRADE database [[CITE]]. As countries experience crises, their participation in the  international oil system is placed at risk, potentially triggering supply or demand shocks in other countries. 
+
+Countries respond to the changing energy security environment in several ways. Exporters may choose to temporarily increase production in response to supply shocks elsewhere. The countries that are members of the International Energy Agency may vote to release their emergency stockpiles. The model's behavior is verified against previous qualitative and  quantitative analysis, and in consultation with subject-matter experts. 

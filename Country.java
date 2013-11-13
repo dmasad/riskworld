@@ -23,7 +23,9 @@ public class Country implements Steppable {
 	double totalImports;
 	double totalExports;
 	
-	double totalProduction;
+	double domesticShare;
+	double totalDemand;
+	
 	double totalCapacity;
 	
 	double supplyRatio;
@@ -95,6 +97,7 @@ public class Country implements Steppable {
 			Edge e = (Edge)o;
 			totalImports += ((TradeEdge)e.getInfo()).baseSize;
 		}
+		totalDemand = totalImports * 1.0/(1 - domesticShare);
 		// Exports
 		totalExports = 0;
 		Bag outEdges = network.getEdgesOut(this);
@@ -132,7 +135,7 @@ public class Country implements Steppable {
 			Country neighbor = (Country)e.getFrom();
 			if (!neighbor.inCrisis) currentImports += ((TradeEdge)e.getInfo()).currentSize;
 		}
-		supplyRatio = totalImports/currentImports;
+		supplyRatio = totalDemand/currentImports;
 		if (supplyRatio > world.shockThreshold) {
 			supplyShock = true;
 			if (world.verbose) System.out.println(name + " experiencing supply shock");
@@ -248,8 +251,14 @@ public class Country implements Steppable {
 	
 	// Getters and Setters for inspection
 	public String getName() {return name;}
-	public Double getTotalImports() { return totalImports;}
-	public Double getTotalExports() {return totalExports;}
+	public double getTotalImports() { return totalImports;}
+	public double getTotalExports() {return totalExports;}
+	public double getDomesticShare() {return domesticShare;}
+	public void setDomesticShare(double newShare) {
+		domesticShare = newShare;
+		totalDemand = totalImports * 1.0/(1 - domesticShare);
+	}
+	public double getTotalDemand() {return totalDemand;}
 	public boolean getInCrisis() {return inCrisis;}
 	public void setInCrisis(boolean crisis) {inCrisis = crisis;}
 	public double getCrisisLength() {return crisisLength;}

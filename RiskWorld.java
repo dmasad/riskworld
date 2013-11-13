@@ -36,6 +36,8 @@ public class RiskWorld extends SimState {
 	
 	TradeMonitor tm;
 	
+	double[] allSupplyRatios;
+	
 	// Geometries
 	GeomVectorField map = new GeomVectorField(worldHeight, worldWidth);
 	GeomVectorField capitals = new GeomVectorField(worldHeight, worldWidth);
@@ -95,7 +97,11 @@ public class RiskWorld extends SimState {
 				String[] row = line.split("\t");
 				String name = row[0];
 				double instability = Double.parseDouble(row[3]);
-				Country newCountry = new Country(this, name, instability);
+				double domesticShare = 0;
+				if (row.length == 5) 
+					domesticShare = Double.parseDouble(row[4]);
+				Country newCountry = new Country(this, name, instability);	
+				newCountry.domesticShare = domesticShare;
 				allCountries.put(name, newCountry);
 				schedule.scheduleRepeating(newCountry);
 			}
@@ -235,7 +241,7 @@ public class RiskWorld extends SimState {
 	public void setContagion(boolean flag) {contagion = flag;}
 	public boolean getAssistance() { return assistance; }
 	public void setAssistance(boolean assistance) { this.assistance = assistance;}
-
+	public double[] getAllRatios() {return allSupplyRatios;}
 
 	/**
 	 * Main function

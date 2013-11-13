@@ -77,17 +77,28 @@ public class BulkRunner {
 	 */
 	public static void main(String[] args) {
 		int n = 100; // Number of model runs:
+		int j = 0; // Current iteration counter
 		int numSteps = 60;
 		Gson gson = new Gson();
-		ModelOutput[] outputs = new ModelOutput[n];
+		ModelOutput[] outputs = new ModelOutput[n*4];
 		RiskWorld w = new RiskWorld(System.currentTimeMillis());
-		for (int i=0; i<n; i++) {
-			w.start();
-			for (int t=0; t<numSteps; t++)
-				w.schedule.step(w);
-			outputs[i] = new ModelOutput(w);
-			if (i%20 == 0) System.out.println(i);
+		boolean[] vals = {true, false};
+		for (boolean contagion : vals) {
+			for (boolean assistance : vals) {
+				for (int i=0; i<n; i++) {
+					w.contagion = contagion;
+					w.assistance = assistance;
+					w.start();
+					for (int t=0; t<numSteps; t++)
+						w.schedule.step(w);
+					
+					outputs[j] = new ModelOutput(w);
+					j++;
+					if (i%20 == 0) System.out.println(i);
+				}
+			}
 		}
+		
 		System.out.println("Exporting data...");
 		String outJson = gson.toJson(outputs);
 		exportJSON("RiskOut.json", outJson);

@@ -26,13 +26,21 @@ The model consists of countries, each of which has a set supply of and demand fo
 The model parameters currently remain fixed for each run: political instability, supply, demand, and trade relations are treated as constant. 
 
 \subsection{Data Sources}
-The model inputs are empirical whenever possible. Data inputs are: oil trade relationships, country political instability, and country consumption of domestic oil production. Total supply and demand are derived from input data.
+The model inputs are empirical whenever possible. Data inputs are: oil trade relationships, country political instability, and country consumption of domestic oil production. Total supply and demand are derived largely from input data.
 
 The network of oil imports and exports comes from the United Nations-maintained COMTRADE database \citep{un_2013}. I extract all imports of crude petroleum (product code 2709) and other unprocessed petrolem (product code 2710) for 2012, the most recent year for which full data is available. Note that import data appears to be more reliable than export data: many major oil producers (particularly Saudi Arabia and Venezuela) only report export volume by region (e.g. Europe, North America); however, the majority of their trade partners report their imports from them.
 
-Political instability estimates are taken from the Economist Intelligence Unit's Political Index ratings \citep(eiu_2013). These are in turn estimated based on the methodology developed by the Political Instability Task Force \citep{goldstone_2005}, which could predict the onset of internal instability in a two-year period with 80\% accuracy. Thus, these scores are normalized such that a rating of 10 (the maximum) is associated with an 80\% probability of instability within a 24-month timeframe, translating into a [[FILLIN]] monthly probability of crisis onset.
+Political instability estimates are taken from the Economist Intelligence Unit's Political Index ratings \citep{eiu_2013}. These are in turn estimated based on the methodology developed by the Political Instability Task Force \citep{goldstone_2005}, which could predict the onset of internal instability in a two-year period with 80\% accuracy. Thus, these scores are normalized such that a rating of 10 (the maximum) is associated with an 80\% probability of instability within a 24-month timeframe, translating into a [[FILLIN]] monthly probability of crisis onset.
 
+For the majority of countries, I assume that supply and demand are equal to total export and imports, respectively. For the top ten oil producers, I use US Energy Information Administration (EIA) estimates \citep{} for those countries' consumption of their own domestic production. 
 
+\subsection{Formal Description}
+
+The model consists of \textbf{Country} agents, linked by two networks: a directed \textbf{trade network}, and an undirected \textbf{geographic adjacency} network, where the country agents are the network nodes.
+
+Model variables may be \emph{data-derived}, \emph{parameters} that are fixed for each run and may be changed between them, or \emph{states} of the agents and edges that vary during the model. 
+
+\subsubsection{Agent Description}
 
 \section{Model Analysis}
 

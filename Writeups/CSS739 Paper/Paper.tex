@@ -1,5 +1,8 @@
 \documentclass{article}
 	\usepackage{natbib}
+	\usepackage{mathtools}
+	\usepackage{amsmath}
+	\usepackage{algorithm2e}
 
 \begin{document}
 
@@ -21,7 +24,7 @@ In this paper, I present a novel model linking energy security with internationa
 
 \subsection{Overview}
 
-The model consists of countries, each of which has a set supply of and demand for crude oil. Countries are linked by a network of export-import relationships. Each month, some countries enter crisis with fixed probabilities; the exports and imports of countries in crisis are considered \emph{at risk}. If \textbf{contagion} is enabled, a crisis in one country may spread to its immediate geographic neighbors. If \textbf{assistance} is enabled, oil exporters may increase their production to balance a loss of secure oil by their major import partners.
+The model consists of countries, each of which has a set supply of and demand for crude oil. Countries are linked geographically, and by a network of export-import relationships. Each month, some countries enter crisis with fixed probabilities; the exports and imports of countries in crisis are considered \emph{at risk}. If \textbf{contagion} is enabled, a crisis in one country may spread to its immediate geographic neighbors. If \textbf{assistance} is enabled, oil exporters may increase their production to balance a loss of secure oil by their major import partners.
 
 The model parameters currently remain fixed for each run: political instability, supply, demand, and trade relations are treated as constant. 
 
@@ -36,13 +39,118 @@ For the majority of countries, I assume that supply and demand are equal to tota
 
 \subsection{Formal Description}
 
-The model consists of \textbf{Country} agents, linked by two networks: a directed \textbf{trade network}, and an undirected \textbf{geographic adjacency} network, where the country agents are the network nodes.
+The model consists of \textbf{Country} agents, posessing several characteristics and linked by two networks: a directed \textbf{trade network}, and an undirected \textbf{geographic adjacency} network, where the country agents are the network nodes.
 
-Model variables may be \emph{data-derived}, \emph{parameters} that are fixed for each run and may be changed between them, or \emph{states} of the agents and edges that vary during the model. 
+Model variables may be \emph{fixed} based on data, \emph{parameters} that are fixed for each run and may be changed between them, or \emph{states} of the agents and edges that vary during the model.
 
-\subsubsection{Agent Description}
+\subsubsection{Networks}
 
-\section{Model Analysis}
+Agents are connected by two networks, which we can also express as matrices. Let $\mathbf{G}$ be the geographic adjacency matrix, such that $g_{i,j}=g_{j,i}=1$ when counties $i$ and $j$ are geographically contiguous or near-contiguous, and $0$ otherwise. 
+
+Let $\mathbf{E}$ be the trade matrix, such that $e_{i,j}$ denotes the volume of oil exports from $i$ to $j$. Note that if the assistance submodel is turned on, the values of $\mathbf{E}$ may change over time.
+
+\subsubsection{Agent parameters and variables}
+
+Each agent represents an independent country. Agents are associated with the \textbf{geometry} of their position on a world map, which determines their neighbors. They are described by two submodels: an oil model, and a crisis model.
+
+\paragraph{Oil Submodel}
+\begin{itemize}
+	\item \textbf{Domestic Share} of the country's oil demand satisfied by domestic production. For most countries, this defaults to 0; for the top ten oil producers, it is set based on US Energy Information Administration data \citep{}.
+	\item \textbf{Total Imports} is the sum of the current volume of all oil imports. 
+	\item \textbf{Total Demand} is the sum of current imported and domestic oil consumed. Since the EIA reports the share of total consumption that is domestically-sourced, demand is calculated as: $$\text{Total Demand}_i = \sum_j e_{j,i} \cdot (1 - \text{Domestic Share})^{-1}$$
+	With $Total Imports$ set at the initial baseline. If current imports increase (as explained below) then supply will exceed demand. 
+	\item \textbf{Total Exports} is the sum of current exported oil to all other countries.
+\end{itemize}
+
+\paragraph{Crisis Submodel}
+\begin{itemize}
+	\item \textbf{Instability} is a measure of the country's political instability on a 0-10 scale, and determines the probability of a crisis or conflict -- a production shock. It is obtained from \citet{eiu_2013}. 
+	\item \textbf{In Crisis?} is simply a boolean variable determining whether or not a country is currently experiencing a crisis or conflict.
+	\item \textbf{Crisis Length} is the number of months remaining in a crisis, if one is currently in process. When a country enters crisis, this number is drawn from a power law distribution, as described below.
+\end{itemize}
+
+\paragraph{Assistance Submodel}
+\begin{itemize}
+	\item \textbf{Increasing Production} is a boolean of whether or not the country is currently in a state of temporarily-increased production.
+	\item \textbf{Increasing Production For} stores the country being assisted. I assume that countries target their assistance at one other country.
+		\item \textbf{Crisis Length} is the number of months remaining in a crisis, if one is currently in process. When a country enters crisis, this number is drawn from a power law distribution, as described below.
+			\item \textbf{Total Capacity} is the country's capacity to rapidly increase oil for export above its inital baseline. Defaults to 1.1 (that is, countries can rapidly increase output by 10\%) based on consultations with subject-matter experts. 
+\end{itemize}
+
+\subsubsection{Agent Behavior}
+
+Each tick of the model, agents are activated in random order, as follows:
+
+\begin{algorithm}[H]
+	\eIf{not in crisis} {
+		enter crisis with $Pr(crisis) \propto instability$ \;
+		\If{entered crisis}{
+			Crisis Length $\mathtt{\sim}$  Power Law \;
+			\If{Contagion turned on} {
+				\For{each neighboring country} {
+					Check whether neighbor enters crisis \;
+			}
+		}}}{
+		$Crisis Length = Crisis Length - 1$
+		}
+	\If{Assistance turned on} {
+		\eIf{Assisting another country} {
+			\If{Assisted country no longer in supply shock} {
+				End assistance\;
+			}
+		} {
+			\For{each out-neighbor} {
+				\If{Neighbor in supply shock} {
+					Assist neighbor with $Pr = \frac{Exports to neighbor}{Total exports}$
+				}
+			}
+		}
+	}	
+\end{algorithm}
+
+Once all agents have acted, their energy-security metrics are computed, as described below.
+
+\subsubsection{Energy Security Metrics}
+
+Let $\delta(i)$ be the \emph{Security indicator} function, defined as:
+\[
+\delta(i) = \begin{dcases*}
+	1 & when $i$ is not in crisis\\
+	0 & when $i$ is in crisis
+\end{dcases*}
+\]
+
+Country-level indicators are:
+
+\begin{itemize}
+	\item \textbf{Supply Ratio} is the fraction of the country's current demand being met by \emph{secure} imports -- that is, imports from countries that are not in crisis. Formally:
+	$$
+		\text{Supply Ratio}_i = \frac{\text{Total Demand}_i}{\sum_{j}e_{j,i}\delta(j)}
+	$$
+\item \textbf{Demand Ratio} is the fraction of the country's current exports going to countries that are not in crisis -- secure exports. 
+$$
+\text{Demand Ratio}_i = \frac{\sum_{j}e_{i,j}\delta(j)}{\sum_{j}e_{i,j}}
+$$
+\end{itemize}
+
+The model also computes similar global ratios:
+\begin{itemize}
+	\item \textbf{Global Supply Ratio} is the all country's current demand being met by secure imports:
+	$$
+		\text{Global Supply Ratio} = \frac{\sum_i\text{Total Demand}_i}{\sum_i\sum_{j}e_{j,i}\delta(j)}
+	$$
+	\item \textbf{Global Demand Ratio} is the fraction of worldwide exports going to countries that are not in crisis:
+	$$
+		\text{Global Demand Ratio} = \frac{\sum_i \text{Total Demand}_i\delta(i)}{\sum_i\sum_{j}e_{i,j}}
+	$$
+	\item \textbf{Global Overall Ratio} is the ratio between secure supply and secure demand:
+	$$
+		\text{Global Overall Ratio} = \frac{\sum_i \text{Total Demand}_i\delta(i)}{\sum_i\sum_{j}e_{j,i}\delta(j)}
+	$$
+\end{itemize}
+
+
+\section{Model Results and Analysis}
 
 \section{Discussion}
 

@@ -26,6 +26,7 @@ public class Country implements Steppable {
 	double domesticShare;
 	double totalDemand;
 	
+	double spareCapacity;
 	double totalCapacity;
 	
 	double supplyRatio;
@@ -121,7 +122,8 @@ public class Country implements Steppable {
 		// PLACEHOLDER ASSUMPTIONS:
 		// Oil consumption from imports only 
 		// Excess capacity 10% of current.
-		totalCapacity = 1.1 * totalExports;
+		spareCapacity = world.defaultExcessCapacity;
+		totalCapacity = (1 + spareCapacity) * totalExports;
 		
 	}
 	
@@ -169,7 +171,7 @@ public class Country implements Steppable {
 			inCrisis = true;
 			if (world.contagion) spreadContagion();
 			//crisisLength = Math.ceil(4 * Math.exp(world.random.nextGaussian()));
-			crisisLength = Math.ceil(world.util.randomPowerLaw(1, 800, -1.37));
+			crisisLength = Math.ceil(world.util.randomPowerLaw(1, 800, world.conflictExponent));
 		}
 	}
 	
@@ -258,6 +260,11 @@ public class Country implements Steppable {
 		domesticShare = newShare;
 		totalDemand = totalImports * 1.0/(1 - domesticShare);
 	}
+	public double getSpareCapacity() {return spareCapacity;}
+	public void setSpareCapacity(double newCapacity) {
+		spareCapacity = newCapacity;
+		totalCapacity = (1 + spareCapacity) * totalExports;
+	}
 	public double getTotalDemand() {return totalDemand;}
 	public boolean getInCrisis() {return inCrisis;}
 	public void setInCrisis(boolean crisis) {inCrisis = crisis;}
@@ -273,6 +280,9 @@ public class Country implements Steppable {
 	public void setInstability(double instability) {
 		this.instability = (instability/10.0) * 0.065;
 	}
+	
+	
+	
 	public XYSeries getRatioSeries() {return supplyRatioSeries;}
 
 }

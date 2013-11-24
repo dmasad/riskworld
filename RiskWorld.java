@@ -5,11 +5,14 @@ import java.io.File;
 import java.io.FileReader;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import com.vividsolutions.jts.geom.Envelope;
 
 import sim.engine.SimState;
+import sim.engine.Steppable;
 import sim.field.geo.GeomVectorField;
 import sim.field.network.Network;
 import sim.io.geo.ShapeFileImporter;
@@ -19,8 +22,8 @@ import sim.util.geo.MasonGeometry;
 @SuppressWarnings("serial")
 public class RiskWorld extends SimState {
 	// Model Parameters:
-	int worldHeight = 400;
-	int worldWidth = 900;
+	int worldHeight = 600;
+	int worldWidth = 1200;
 	// Parameters
 	// ==================================
 	double minEdgeToDisplay = 40000000; // Min export volume to show on the map.
@@ -28,6 +31,8 @@ public class RiskWorld extends SimState {
 	double shockThreshold = 2; // The demand/supply threshold required for a supply shock.
 	boolean contagion = false; // Flag to determine whether or not conflict contagion is active.
 	boolean assistance = true;
+	double conflictExponent = -1.37;
+	double defaultExcessCapacity = 0.1;
 	
 	// Storage
 	HashMap<String,Country> allCountries;
@@ -77,11 +82,21 @@ public class RiskWorld extends SimState {
 		//schedule.clear();
 		schedule.reset();
 		for (Country c : allCountries.values()) {
-			schedule.scheduleRepeating(c);
+			//schedule.scheduleRepeating(c);
 			c.initIndustry();
 			c.inCrisis = false;
 			c.crisisLength = -1;
 		}
+		schedule.scheduleRepeating(new Steppable() {
+			public void step(SimState state) {
+				ArrayList<String> names = new ArrayList<String>(allCountries.keySet());
+				Collections.shuffle(names);
+				for (String name : names) {
+					Country current = allCountries.get(name);
+					current.step(state);
+				}
+			}
+		});
 		tm = new TradeMonitor(this);
 		schedule.scheduleRepeating(tm);
 	}
@@ -241,7 +256,19 @@ public class RiskWorld extends SimState {
 	public void setContagion(boolean flag) {contagion = flag;}
 	public boolean getAssistance() { return assistance; }
 	public void setAssistance(boolean assistance) { this.assistance = assistance;}
+	public double getConflictExponent() {return conflictExponent;}
+	public void setConflictExponent(double exponent) {conflictExponent = exponent;}
+	public double getDefaultExcessCapacity() {return defaultExcessCapacity;}
+	public void setDefaultExcessCapacity(double capacity) {
+		double oldCapacity = defaultExcessCapacity;
+		for (Country c : allCountries.values()) {
+			if (oldCapacity == c.spareCapacity)
+				c.setSpareCapacity(capacity);
+		}
+		defaultExcessCapacity = capacity;
+	}
 	public double[] getAllRatios() {return allSupplyRatios;}
+	
 
 	/**
 	 * Main function

@@ -52,7 +52,9 @@ public class Country implements Steppable {
 		this.world = world;
 		this.name = name;
 		// Instability=100 <=> Approx. 80% chance of crisis occurring once in 24 tests.
-		this.instability = (instability/10.0) * 0.065; 
+		this.instability = (instability/10.0) * 0.065;
+		
+		spareCapacity = world.defaultExcessCapacity;
 		crisisCheckCounter = 0;
 	}
 	
@@ -120,9 +122,7 @@ public class Country implements Steppable {
 		
 		// TODO: Update with real data
 		// PLACEHOLDER ASSUMPTIONS:
-		// Oil consumption from imports only 
 		// Excess capacity 10% of current.
-		spareCapacity = world.defaultExcessCapacity;
 		totalCapacity = (1 + spareCapacity) * totalExports;
 		
 	}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  23 NOV 2013 18:28
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  24 NOV 2013 17:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -313,79 +313,96 @@ Package natbib Warning: Citation `un_2013' on page 2 undefined on input line 34
 
 
 Package natbib Warning: Citation `eiu_2013' on page 2 undefined on input line 3
-6.
+8.
 
 
 Package natbib Warning: Citation `goldstone_2005' on page 2 undefined on input 
-line 36.
+line 38.
+
+
+Package natbib Warning: Citation `cioffi_2004' on page 2 undefined on input lin
+e 40.
+
+
+Package natbib Warning: Citation `weisstein_2013' on page 2 undefined on input 
+line 40.
+
+
+Package natbib Warning: Citation `PRIO' on page 2 undefined on input line 50.
+
+
+Package natbib Warning: Citation `hendrix_2013' on page 2 undefined on input li
+ne 50.
 
 [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 58.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 70.
  (/usr/local/texlive/2012/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 58.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 70.
+ [3]
+
+Package natbib Warning: Citation `eiu_2013' on page 4 undefined on input line 7
+9.
+
+[4] [5]
+
+Package natbib Warning: Citation `kilian_2008' on page 6 undefined on input lin
+e 194.
 
 
-Package natbib Warning: Citation `eiu_2013' on page 3 undefined on input line 6
-7.
+Package natbib Warning: Citation `black_2013' on page 6 undefined on input line
+ 194.
 
-[3] [4]
-
-Package natbib Warning: Citation `kilian_2008' on page 5 undefined on input lin
-e 157.
-
-
-Package natbib Warning: Citation `black_2013' on page 5 undefined on input line
- 157.
-
-[5]
 
 Package natbib Warning: Citation `goldstone_2005' on page 6 undefined on input 
-line 159.
+line 196.
 
 
 Package natbib Warning: Citation `eiu_2013' on page 6 undefined on input line 1
-59.
+96.
 
 
 Package natbib Warning: Citation `ward_2013' on page 6 undefined on input line 
-159.
+196.
 
 
-Package natbib Warning: Citation `un_2013' on page 6 undefined on input line 15
-9.
+Package natbib Warning: Citation `un_2013' on page 6 undefined on input line 19
+6.
 
-(./Paper.bbl)
+[6] (./Paper.bbl)
 
 Package natbib Warning: There were undefined citations.
 
-[6] (./Paper.aux) ) 
+[7] (./Paper.aux) ) 
 Here is how much of TeX's memory you used:
- 4126 strings out of 493488
- 56760 string characters out of 3141326
- 140018 words of memory out of 3000000
- 7387 multiletter control sequences out of 15000+200000
+ 4131 strings out of 493488
+ 56815 string characters out of 3141326
+ 141018 words of memory out of 3000000
+ 7392 multiletter control sequences out of 15000+200000
  10492 words of font info for 39 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 51i,20n,27p,930b,360s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 51i,20n,27p,930b,380s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmbx10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmex10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmmi10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi7.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr12.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-17.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.
-pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
-></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Paper.pdf (6 pages, 154760 bytes).
+cm/cmmi5.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi7.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+12.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17
+.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pf
+b></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><
+/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
+usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></us
+r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr
+/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Paper.pdf (7 pages, 185517 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 50 compressed objects within 1 object stream
+ 88 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

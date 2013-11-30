@@ -33,9 +33,21 @@ The model inputs are empirical whenever possible. Data inputs are: oil trade rel
 
 The network of oil imports and exports comes from the United Nations-maintained COMTRADE database \citep{un_2013}. I extract all imports of crude petroleum (product code 2709) and other unprocessed petrolem (product code 2710) for 2012, the most recent year for which full data is available. Note that import data appears to be more reliable than export data: many major oil producers (particularly Saudi Arabia and Venezuela) only report export volume by region (e.g. Europe, North America); however, the majority of their trade partners report their imports from them.
 
+For the majority of countries, I assume that supply and demand are equal to total export and imports, respectively. For the top ten oil producers, I use US Energy Information Administration (EIA) estimates \citep{} for those countries' consumption of their own domestic production. 
+
 Political instability estimates are taken from the Economist Intelligence Unit's Political Index ratings \citep{eiu_2013}. These are in turn estimated based on the methodology developed by the Political Instability Task Force \citep{goldstone_2005}, which could predict the onset of internal instability in a two-year period with 80\% accuracy. Thus, these scores are normalized such that a rating of 10 (the maximum) is associated with an 80\% probability of instability within a 24-month timeframe, translating into a [[FILLIN]] monthly probability of crisis onset.
 
-For the majority of countries, I assume that supply and demand are equal to total export and imports, respectively. For the top ten oil producers, I use US Energy Information Administration (EIA) estimates \citep{} for those countries' consumption of their own domestic production. 
+Crisis duration is drawn independently from onset. \citet{cioffi_2004} and others have argued that internal and external conflict durations follow a power law distribution, which I use here. Specifically, in order to accomodate the limitations of the MASON random-number generator, I use a uniform approximation \citep{weisstein_2013}, defined as:
+$$
+\left((x_{1}^{\alpha} - x_{0}^{\alpha})y + x_{0}^{\alpha}\right)^{\frac{1}{\alpha}} \sim \text{Power Law}
+$$
+where 
+$$Y \sim U[0,1]$$
+$$ x_0  \equiv \text{minimum}$$
+$$ x_1  \equiv \text{maximum}$$
+$$ \alpha \equiv \text{Coefficient}$$
+
+I calibrate the parameters from two datasets: \citet{PRIO} for armed conflict, and \citep{hendrix_2013}, the Social Conflict in Africa Database, which includes both armed and lower-level social conflicts. I subset the PRIO dataset for conflicts in Africa and merge it with SCAD, eliminating duplicates and events below the severity of a general strike, in order to obtain as complete as possible a set of crises and conflicts that may be associated with an oil production  shock. I find the duration of each event, and fit a power law to the resulting distribution, resulting in an estimated coefficient of $\mathbf{-1.37}$.
 
 \subsection{Formal Description}
 
@@ -82,30 +94,53 @@ Each agent represents an independent country. Agents are associated with the \te
 Each tick of the model, agents are activated in random order, as follows:
 
 \begin{algorithm}[H]
+	\caption{main loop}
 	\eIf{not in crisis} {
-		enter crisis with $Pr(crisis) \propto instability$ \;
-		\If{entered crisis}{
-			Crisis Length $\mathtt{\sim}$  Power Law \;
-			\If{Contagion turned on} {
-				\For{each neighboring country} {
-					Check whether neighbor enters crisis \;
-			}
-		}}}{
-		$Crisis Length = Crisis Length - 1$
+			Call crisis submodel \;
+		}{
+			$Crisis Length = Crisis Length - 1$ \;
+			\If {Crisis Length == 0} { End crisis \; }
 		}
 	\If{Assistance turned on} {
-		\eIf{Assisting another country} {
+		Call assistance submodel \;
+	}	
+\end{algorithm}
+
+\begin{algorithm}[H]
+	\caption{crisis submodel}
+		enter crisis with $Pr(crisis) \propto instability$ \;
+		\If{entered crisis}{
+			Crisis Length $\mathtt{\sim}  \text{Power Law}$ \;
+			\If{Contagion turned on} {
+				\For{each neighboring country} {
+					Call neighbor's crisis submodel \;
+			}}}
+\end{algorithm}
+
+
+\begin{algorithm}[H]
+	\caption{assistance submodel}
+	\eIf{Currently assisting another country} {
 			\If{Assisted country no longer in supply shock} {
-				End assistance\;
+				\tcp{Ending assistance}
+				\For{each export edge} {
+					edge volume = baseline edge volume;\
+				}
 			}
 		} {
 			\For{each out-neighbor} {
 				\If{Neighbor in supply shock} {
-					Assist neighbor with $Pr = \frac{Exports to neighbor}{Total exports}$
+					Assist neighbor with $Pr = \frac{\text{Exports to neighbor}}{\text{Total exports}}$
+				}
+			}
+			\If{Assisting neighbor} {
+				\tcp{Increasing output}
+				\For{each export edge} {
+					edge volume = edge volume * (1 + excess capacity)\;
 				}
 			}
 		}
-	}	
+
 \end{algorithm}
 
 Once all agents have acted, their energy-security metrics are computed, as described below.
@@ -151,6 +186,24 @@ The model also computes similar global ratios:
 
 
 \section{Model Results and Analysis}
+
+\subsection{Validation}
+
+\subsection{Global Outcome Range}
+
+I run the model for 100 iterations for each permutation of the Contagion and Assistance flags, 400 iterations in total; each iteration was run for 60 ticks, or 5 simulated years. I collect the country-level and global indicators for each month of each iteration. 
+
+Figure X shows a histogram of the Global Overall Ratio (the ratio between secure demand and supply) across all iteration-months. It appears to approximate a skew normal distribution, centered on 1 (a balance between supply and demand) but with a longer tail to the right -- supply shocks are more likely than demand shocks, and the most extreme supply shocks the model generates, though low-probability, are more extreme than any demand shocks. 
+
+We can also examine the model iterations separately. Initially, we can characterize each iteration by the mean and variance of each indicator, as shown in Figure X. A high Overall or Supply mean ratio may indicate overall higher oil insecurity, but if the variance is low, it is `stably' insecure; in contrast, the mean may be close to 1 or even below it, but high variance would indicate severe uncertainty and fluctuation -- a distinct type of insecurity. Note that the overall correlation between mean and variance is XX, indicating that they are not directly linked to one another.
+
+We can further look at the trace of the indicators within each iteration, as they change from tick to tick. Figure X shows the traces of the 400 model runs overlaid on one another, and indicates some clear patterns. The majority of runs stay within a fairly narrow band, indicating similar levels of stability. Spikes outside the band, when they occur, tend to be brief. Note, however, that there are some longer-term spikes -- shocks which persist for multiple months, yielding values that become at least temporary baselines, even seeing fluctuations around them.
+
+\subsection{Contagion and Assistance}
+
+In order to disaggregate the effects of the Contagion and Assistance model parameters, we examine their results separately. Figure XX shows histograms of the scenario-months for Contagion and Assistance, respectively. The Contagion comparison indicates that conflict contagion does not appear to change the mode of the ratio distribution, which for both remains very close to 1. However, contagion does increase the variance of the distribution, making extreme outcomes more likely -- both to the right, indicating supply shocks, but also to the left, indicating demand shocks. 
+
+Similarly, the modes of the distributions of ratios for scenario-months where Assistance is set to on and off are similarly both close to 1. 
 
 \section{Discussion}
 

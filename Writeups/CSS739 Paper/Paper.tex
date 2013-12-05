@@ -14,17 +14,23 @@
 
 Energy security is defined by the International Energy Agency as ``the uninterrupted availability of energy sources at an affordable price''\citep{iea_2013}. As the world's energy demand continues to expand in the face of growing scarcity, energy security is becoming increasingly critical not just to developed countries but to developing ones as well \citep{yergin_2006}. Thus, assessing the energy security of different countries is important in order to understand the overall state of the international system. Despite this, there have been few published attempts to create formal models of energy security. 
 
-One such model, MOSES (Model of Short-term Energy Security), was created within the International Energy Agency (IEA), the intergovernmental organization of the world's major oil importers created as a counterbalance to exporter cartel OPEC \citep{}. As the name indicates, MOSES focuses on short-term risks, defined as a timescale of days and weeks. Furthermore, MOSES assigns risk scores based on an impressive, but ultimately static, set of indicators. In particular, the indicator used to measure political stability is ``weighted average of political stability of suppliers''. However, the greater the diversity of suppliers (another input into the model), the greater the potential range of political stabilities. Furthermore, averaging ratings of political risk eliminates the complexity that characterises international political stabilitiy, ignoring the possibility of crisis and conflict contagion \citep{}. 
+Much of the analysis has focused on a portfolio-based approach. \citet{wu_2009} uses a portfolio diversity approach to analyze China's mix of crude oil and petrolem products. While the paper notes that ``Oil import-specific risk derives from events, such as political events, natural disaster and so on, that are not related to general movements in the international market'', but does not analyze the risks of such events directly. It does, however, address the relatively less significant risk of piracy along several shipping routes. \citet{stirling_2010} and \citet{skea_2010} take a broader, more theoretical approach, and develops a multicriteria methodology for evaluating the diversity of an entire energy portfolio as it contributes to energy security. However, changing an entire energy portfolio takes a great deal of time -- it is a long-term process, measured in years or decades. Similarly, \citet{jacobson_2009} evaluates a set of possible future courses of action to jointly address climate, environmental and energy-security concerns -- again, courses of actions only implementable in the long term.
 
-Other models of energy security focus on long-term timeframes, in years and decades. [[EXPAND MORE HERE]]
+Short-term energy security, in contrast, appears to have been little-addressed in the literature. However, an important short-term analysis, MOSES (Model of Short-term Energy Security), was created within the International Energy Agency (IEA), the intergovernmental organization of the world's major oil importers created as a counterbalance to exporter cartel OPEC \citep{}. As the name indicates, MOSES focuses on short-term risks, which it defines as a timescale of days and weeks. Furthermore, MOSES assigns risk scores based on an impressive, but ultimately static, set of indicators. In particular, the indicator used to measure political stability is ``weighted average of political stability of suppliers''. However, the greater the diversity of suppliers (another input into the model), the greater the potential range of political stabilities. Furthermore, averaging ratings of political risk eliminates the complexity that characterises international political stabilitiy, ignoring the possibility of crisis and conflict contagion \citep{}. 
 
-In this paper, I present a novel model linking energy security with international political stability.
+In fact, as \citet{hamilton_2003} describes, oil supply shocks have been driven caused by conflict involving oil producers, both domestic and international. \citet{hamilton_2003} argues that supply shock-driven changes to oil prices have a nonlinear effect on GDPs, while \citet{killian_2008} argues that the macroeconomic effects of the oil shocks themselves are small. Nevertheless, the price of oil is only an indirect indicator of energy security; if a substantial volume of oil cannot be extracted or exported, and hence is unavailable for consumption, it poses an energy security risk regardless of what the price of oil is doing. 
+
+In this paper, I present a novel model linking energy security with political conflict. At the core of the model is the supply and demand for crude oil at the country level, both imported and domestically-produced. Supply and demand are placed at risk when countries experience crises and conflicts. The model operates on the meso timescale, of months and years rather than days or decades.  It produces local and global time-series of oil security indicators with each iteration. By running multiple iterations with different parameters, I generate notional near-future scenarios.  
+
+The model straddles the boundary between a complicated cellular automata and a simple agent-based model. As we shall see, at its simplest configuration, the model is essentially stochastically sampling from the space of possible international crisis configurations and measuring their impact, with no agent decisionmaking or interaction. By incrementally adding more  elements (in particular, the possibility of conflict contagion and rapid increases of production to counterbalance supply shocks), we can estimate the impact of the additional complexity. 
+
+In the remainder of the paper, I describe the model in more detail, its data sources, and its various submodels. I use the model to conduct several experiments, and describe the output. 
 
 \section{Model Description}
 
 \subsection{Overview}
 
-The model consists of countries, each of which has a set supply of and demand for crude oil. Countries are linked geographically, and by a network of export-import relationships. Each month, some countries enter crisis with fixed probabilities; the exports and imports of countries in crisis are considered \emph{at risk}. If \textbf{contagion} is enabled, a crisis in one country may spread to its immediate geographic neighbors. If \textbf{assistance} is enabled, oil exporters may increase their production to balance a loss of secure oil by their major import partners.
+The model consists of countries, each of which has a set supply of and demand for crude oil. Countries are linked geographically, and by a network of export-import relationships, and each country has a fixed supply of, and demand for, crude oil. Each month, some countries enter crisis at random; the exports and imports of countries in crisis are considered \emph{at risk}. If \textbf{contagion} is enabled, a crisis in one country may spread to its immediate geographic neighbors. If \textbf{assistance} is enabled, oil exporters may increase their production to balance a loss of secure oil by their major import partners.
 
 The model parameters currently remain fixed for each run: political instability, supply, demand, and trade relations are treated as constant. 
 
@@ -189,7 +195,9 @@ The model also computes similar global ratios:
 
 \subsection{Validation}
 
-\subsection{Global Outcome Range}
+\subsection{Global Outcomes}
+
+\subsubsection{Outcome Range}
 
 I run the model for 100 iterations for each permutation of the Contagion and Assistance flags, 400 iterations in total; each iteration was run for 60 ticks, or 5 simulated years. I collect the country-level and global indicators for each month of each iteration. 
 
@@ -199,23 +207,26 @@ We can also examine the model iterations separately. Initially, we can character
 
 We can further look at the trace of the indicators within each iteration, as they change from tick to tick. Figure X shows the traces of the 400 model runs overlaid on one another, and indicates some clear patterns. The majority of runs stay within a fairly narrow band, indicating similar levels of stability. Spikes outside the band, when they occur, tend to be brief. Note, however, that there are some longer-term spikes -- shocks which persist for multiple months, yielding values that become at least temporary baselines, even seeing fluctuations around them.
 
-\subsection{Contagion and Assistance}
+\subsubsection{Contagion and Assistance}
 
-In order to disaggregate the effects of the Contagion and Assistance model parameters, we examine their results separately. Figure XX shows histograms of the scenario-months for Contagion and Assistance, respectively. The Contagion comparison indicates that conflict contagion does not appear to change the mode of the ratio distribution, which for both remains very close to 1. However, contagion does increase the variance of the distribution, making extreme outcomes more likely -- both to the right, indicating supply shocks, but also to the left, indicating demand shocks. 
+In order to disaggregate the effects of the Contagion and Assistance model parameters, we examine their results separately. Figure XX shows histograms of the scenario-months for Contagion and Assistance, respectively.
 
-Similarly, the modes of the distributions of ratios for scenario-months where Assistance is set to on and off are similarly both close to 1. 
+Upon visual examination, the distributions with Contagion set to 'On' and 'Off' appear extremely similar. I conduct two statistical tests to determine whether they are in fact drawn from the same underlying distribution -- that is, whether there is no actual difference between them. Both the Kolmogorov-Smirnov  and Mann-Whitney tests indicate that the distributions are in fact different. Nevertheless, the differences are small. The mean ratio for the No Contagion scenario is 1.046, compared to 1.068 for the Contagion scenario. Both a parametric T-Test and nonparametric Wilcoxon Rank-Sum confirm that these means are indeed different, though the difference is small. Similarly, the variance for the No Contagion scenario is 0.045, while the Contagion variance is 0.051. Thus, conflict contagion pushes the scenarios away from the mean, yielding a wider range of outcomes. 
+
+I repeat the same analysis for the the Assistance disabled and enabled scenarios. Again, while the distributions appear extremely similar, both the Kolmogorov-Smirnov and Mann-Whitney tests show that they are different. The mean and variance for Assistance Off are 1.062 and 0.05, respectively, compared to 1.053 and 0.046 when Assistance is enabled. This confirms with our intuition -- international assistance reduces the uncertainty of energy availability, and increases overall energy security, albeit by a small number.
+
+\subsection{Country-level analysis}
+
+In addition to the aggregate global indicators, the model also tracks the Supply and Demand ratios for each country. We can analyze this output in order to understand how different countries' risks differ from one another, and to identify countries at high or low risk.
+
+Figure XX shows a map of the overall risk of a major supply crisis, with the supply ratio rising above 2. Several things immediately jump out: several countries at the highest risk countries are major net oil exporters, including Canada, Mexico and Iran. While these countries derive a large fraction of their consumption from domestic production, they also rely on imports from abroad 
+
+
+\subsection{Sensitivity Analysis}
 
 \section{Discussion}
 
 
-
-In this poster, I will present an initial implementation of a novel agent-based model linking crude oil energy security to inter- and intra-state crises and conflicts, through the mechanism of supply shocks \citep{kilian_2008}. The model operates at the meso (months-years) timescale, and allows countries to react to changes in the oil supply. It can generate ranges of notional near-future trajectories of global and local energy security, providing risk estimates for different countries. The model attempts to capture the emergent consequences of conflict contagion \citep{black_2013}, temporary production increases and varying levels of stockpiles. It can also be used to explore different scenarios, from particular crises to realignments of major trade relationships. 
-
-The agents in the model are geospatially located countries, acting in monthly timesteps. Countries experience exogenous crises based on probabilities derived from empirical estimates (such as \citep{goldstone_2005,eiu_2013,ward_2013}). They are linked geographically, and by oil trade relationships obtained via the COMTRADE database \citep{un_2013}. As countries experience crises, their participation in the  international oil system is placed at risk, changing the volume of `secure' imports or exports of other countries and  potentially triggering supply or demand shocks. 
-
-Countries respond to the changing energy security environment in several ways. Exporters may choose to temporarily increase production in response to supply shocks elsewhere, while countries that are members of the International Energy Agency may vote to release their emergency stockpiles. The model's behavior is verified against previous qualitative and quantitative analysis, and in consultation with subject-matter experts. 
-
-The poster will describe the model's methodology and input data, and provide a visual representation of the model's estimated energy security risk for every country. It will provide a visual example of a representative model run, and illustrate the results of a sweep of the model's behavior and parameter space. Finally, it will describe future work, incorporating different energy sources, shipping chokepoints, and dynamic network updating.
 
  \bibliographystyle{chicago}
 \bibliography{energysecurity}

@@ -54,7 +54,7 @@ public class Country implements Steppable {
 		// Instability=100 <=> Approx. 80% chance of crisis occurring once in 24 tests.
 		this.instability = (instability/10.0) * 0.065;
 		
-		spareCapacity = world.defaultExcessCapacity;
+		spareCapacity = world.defaultSpareCapacity;
 		crisisCheckCounter = 0;
 	}
 	
@@ -274,8 +274,8 @@ public class Country implements Steppable {
 	public double getLocalRatio() {return supplyRatio;}
 	
 	public double getInstability() {
-		return instability;
-		//return instability/0.065 * 10;
+		//return instability;
+		return instability/0.065 * 10;
 	}
 	public void setInstability(double instability) {
 		this.instability = (instability/10.0) * 0.065;

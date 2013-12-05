@@ -32,7 +32,7 @@ public class RiskWorld extends SimState {
 	boolean contagion = false; // Flag to determine whether or not conflict contagion is active.
 	boolean assistance = true;
 	double conflictExponent = -1.37;
-	double defaultExcessCapacity = 0.1;
+	double defaultSpareCapacity = 0.1;
 	
 	// Storage
 	HashMap<String,Country> allCountries;
@@ -113,10 +113,14 @@ public class RiskWorld extends SimState {
 				String name = row[0];
 				double instability = Double.parseDouble(row[3]);
 				double domesticShare = 0;
-				if (row.length == 5) 
+				double spareCapacity = this.defaultSpareCapacity;
+				if (row.length >= 5) 
 					domesticShare = Double.parseDouble(row[4]);
+				if (row.length >= 6)
+					spareCapacity = Double.parseDouble(row[5]);
 				Country newCountry = new Country(this, name, instability);	
 				newCountry.domesticShare = domesticShare;
+				newCountry.spareCapacity = spareCapacity;
 				allCountries.put(name, newCountry);
 				schedule.scheduleRepeating(newCountry);
 			}
@@ -258,14 +262,14 @@ public class RiskWorld extends SimState {
 	public void setAssistance(boolean assistance) { this.assistance = assistance;}
 	public double getConflictExponent() {return conflictExponent;}
 	public void setConflictExponent(double exponent) {conflictExponent = exponent;}
-	public double getDefaultExcessCapacity() {return defaultExcessCapacity;}
+	public double getDefaultExcessCapacity() {return defaultSpareCapacity;}
 	public void setDefaultExcessCapacity(double capacity) {
-		double oldCapacity = defaultExcessCapacity;
+		double oldCapacity = defaultSpareCapacity;
 		for (Country c : allCountries.values()) {
 			if (oldCapacity == c.spareCapacity)
 				c.setSpareCapacity(capacity);
 		}
-		defaultExcessCapacity = capacity;
+		defaultSpareCapacity = capacity;
 	}
 	public double[] getAllRatios() {return allSupplyRatios;}
 	

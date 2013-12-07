@@ -30,8 +30,8 @@ public class TradeMonitor implements Steppable {
 	public TradeMonitor(RiskWorld world) {
 		this.world = world;
 		for (Country c : world.allCountries.values()) {
-			totalSupply += c.totalExports;
-			totalDemand += c.totalImports;
+			totalSupply += (c.totalExports + c.domesticShare*c.totalDemand);
+			totalDemand += c.totalDemand;
 		}
 	}
 	
@@ -41,6 +41,8 @@ public class TradeMonitor implements Steppable {
 		allSupplyRatios = new double[world.allCountries.size()];
 		int i = 0;
 		for (Country c : world.allCountries.values()) {
+			currentDemand += (c.domesticShare*c.totalDemand);
+			currentSupply += (c.domesticShare * c.totalDemand);
 			if (!c.inCrisis) {
 				currentSupply += c.totalExports;
 				currentDemand += c.totalImports;

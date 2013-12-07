@@ -137,7 +137,7 @@ public class Country implements Steppable {
 			Country neighbor = (Country)e.getFrom();
 			if (!neighbor.inCrisis) currentImports += ((TradeEdge)e.getInfo()).currentSize;
 		}
-		supplyRatio = totalDemand/currentImports;
+		supplyRatio = totalDemand/(currentImports + (domesticShare*totalDemand));
 		if (supplyRatio > world.shockThreshold) {
 			supplyShock = true;
 			if (world.verbose) System.out.println(name + " experiencing supply shock");
@@ -271,7 +271,7 @@ public class Country implements Steppable {
 	public double getCrisisLength() {return crisisLength;}
 	public void setCrisisLength(double length) {crisisLength = length;}
 	public int getCrisisCheckCounter() {return crisisCheckCounter;}
-	public double getLocalRatio() {return supplyRatio;}
+	public double getSupplyRatio() {return supplyRatio;}
 	
 	public double getInstability() {
 		//return instability;

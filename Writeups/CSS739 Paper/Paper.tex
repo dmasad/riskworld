@@ -12,25 +12,25 @@
 
 \section{Introduction}
 
-Energy security is defined by the International Energy Agency as ``the uninterrupted availability of energy sources at an affordable price''\citep{iea_2013}. As the world's energy demand continues to expand in the face of growing scarcity, energy security is becoming increasingly critical not just to developed countries but to developing ones as well \citep{yergin_2006}. Thus, assessing the energy security of different countries is important in order to understand the overall state of the international system. Despite this, there have been few published attempts to create formal models of energy security. 
+Energy security is defined by the International Energy Agency as ``the uninterrupted availability of energy sources at an affordable price''\citep{iea_2013}. As the world's energy demand continues to expand in the face of growing scarcity, energy security is becoming increasingly critical not just to developed countries but to developing ones as well \citep{yergin_2006}. Thus, assessing the energy security of different countries is important in order to understand the overall state of the international system. Despite this, there have been few attempts to create formal models of energy security. 
 
-Much of the analysis has focused on a portfolio-based approach. \citet{wu_2009} uses portfolio diversity to analyze China's mix of crude oil and petrolem products. The paper notes that ``Oil import-specific risk derives from events, such as political events, natural disaster and so on, that are not related to general movements in the international market'', but does not analyze the risks of such events directly. It does, however, address the relatively less significant risk of piracy along several shipping routes. \citet{stirling_2010} and \citet{skea_2010} take a broader, more theoretical approach, and develops a multicriteria methodology for evaluating the diversity of an entire energy portfolio as it contributes to energy security. However, changing an entire energy portfolio takes a great deal of time -- it is a long-term process, measured in years or decades. Similarly, \citet{jacobson_2009} evaluates a set of possible future courses of action to jointly address climate, environmental and energy-security concerns -- again, courses of actions only implementable in the long term.
+Much of the analysis to date has taken a portfolio-based approach. \citet{wu_2009} uses portfolio diversity to analyze China's mix of crude oil and processed petrolem products. The paper notes that ``Oil import-specific risk derives from events, such as political events, natural disaster and so on, that are not related to general movements in the international market'', but does not analyze the risks of such events directly. It does, however, address the relatively less significant risk of piracy along several shipping routes. \citet{stirling_2010} and \citet{skea_2010} take a broader, more theoretical approach, and develops a multicriteria methodology for evaluating the diversity of an entire energy portfolio as it contributes to energy security. However, changing the composition of an entire energy portfolio takes a great deal of time -- it is a long-term process, measured in years or decades. Similarly, \citet{jacobson_2009} evaluates a set of possible future courses of action to jointly address climate, environmental and energy-security concerns -- again, courses of actions only implementable over the long term.
 
-Short-term energy security, in contrast, appears to have been little-addressed in the literature. However, an important short-term analysis, MOSES (Model of Short-term Energy Security), was created within the International Energy Agency (IEA), the intergovernmental organization of the world's major oil importers established in part to protect their energy security. As the name of the model indicates, MOSES focuses on short-term risks, which it defines as a timescale of days and weeks. Furthermore, MOSES assigns risk scores based on an impressive, but ultimately static, set of indicators. In particular, the indicator used to measure political stability is ``weighted average of political stability of suppliers''. However, the greater the diversity of suppliers (another input into the model), the greater the potential range of political stabilities. Furthermore, averaging ratings of political risk eliminates the complexity that characterises international political stabilitiy, ignoring the possibility of crisis and conflict contagion \citep{}. 
+Short-term energy security, in contrast, appears to have been little-addressed in the literature. However, an important short-term analysis, MOSES (Model of Short-term Energy Security), was created within the International Energy Agency (IEA), the intergovernmental organization of the world's major oil importers established in part to protect their energy security. As the name of the model indicates, MOSES focuses on short-term risks, which it defines as a timescale of days and weeks. Furthermore, MOSES assigns risk scores based on a broad but ultimately static set of indicators. In particular, the indicator used to measure political stability is the ``weighted average of political stability of suppliers''. However, the greater the diversity of suppliers (another input into the model), the greater the potential range of political stabilities. Averaging ratings of political risk eliminates the complexity that characterises international political stabilitiy, ignoring the possibility of crisis and conflict contagion. 
 
 In fact, as \citet{hamilton_2003} describes, oil supply shocks have been driven caused by conflict involving oil producers, both domestic and international. \citet{hamilton_2003} argues that supply shock-driven changes to oil prices have a nonlinear effect on GDPs, while \citet{killian_2008} argues that the macroeconomic effects of the oil shocks themselves are small. Nevertheless, the price of oil is only an indirect indicator of energy security; if a substantial volume of oil cannot be extracted or exported, and hence is unavailable for consumption, it poses an energy security risk regardless of what the price of oil is doing. 
 
-In this paper, I present a novel model linking energy security with political conflict. At the core of the model is the supply and demand for crude oil at the country level, both imported and domestically-produced. Supply and demand are placed at risk when countries experience crises and conflicts. The model operates on the meso timescale, of months and years rather than days or decades.  It produces local and global time-series of oil security indicators with each iteration. By running multiple iterations with different parameters, I generate notional near-future scenarios.  
+In this paper, I present a novel model linking energy security with political conflict. At the core of the model is the supply and demand for crude oil at the country level, both imported and domestically-produced. Supply and demand are placed at risk when countries experience crises and conflicts. The model operates on the meso timescale, of months and years rather than days or decades.  It produces local and global time-series of oil security indicators with each iteration. By running multiple iterations with different parameters, I generate notional near-future scenarios of changes in international energy security. 
 
 The model straddles the boundary between a complicated cellular automata and a simple agent-based model. As we shall see, at its simplest configuration, the model is essentially stochastically sampling from the space of possible international crisis configurations and measuring their impact, with no agent decisionmaking or interaction. By incrementally adding more  elements (in particular, the possibility of conflict contagion and rapid increases of production to counterbalance supply shocks), we can estimate the impact of the additional complexity. 
 
-In the remainder of the paper, I describe the model in more detail, its data sources, and its various submodels. I use the model to conduct several experiments, and describe the output. 
+In the remainder of the paper, I describe the model in more detail, its data sources, and its various submodels. I use the model to conduct several experiments, describe the output, and conduct a sensitivity analysis. Finally, I discuss my conclucions, both regarding international energy security and the challenges and opportunities of this type of modeling.
 
 \section{Model Description}
 
 \subsection{Overview}
 
-The model consists of countries, each of which has a set supply of and demand for crude oil. Countries are linked geographically, and by a network of export-import relationships, and each country has a fixed supply of, and demand for, crude oil. Each month, some countries enter crisis at random; the exports and imports of countries in crisis are considered \emph{at risk}. If \textbf{contagion} is enabled, a crisis in one country may spread to its immediate geographic neighbors. If \textbf{assistance} is enabled, oil exporters may increase their production to balance a loss of secure oil by their major import partners.
+The model consists of countries, each of which has a set supply of and demand for crude oil. Countries are linked geographically, and by a network of export-import relationships. Each month, some countries enter crisis at random; the exports and imports of countries in crisis are considered \emph{at risk}. If \textbf{Contagion} is enabled, a crisis in one country may spread to its immediate geographic neighbors. If \textbf{Assistance} is enabled, oil exporters may increase their production to balance a loss of secure oil by their major import partners.
 
 The model parameters currently remain fixed for each run: political instability, supply, demand, and trade relations are treated as constant. 
 
@@ -39,21 +39,11 @@ The model inputs are empirical whenever possible. Data inputs are: oil trade rel
 
 The network of oil imports and exports comes from the United Nations-maintained COMTRADE database \citep{un_2013}. I extract all imports of crude petroleum (product code 2709) and other unprocessed petrolem (product code 2710) for 2012, the most recent year for which full data is available. Note that import data appears to be more reliable than export data: many major oil producers (particularly Saudi Arabia and Venezuela) only report export volume by region (e.g. Europe, North America); however, the majority of their trade partners report their imports from them.
 
-For the majority of countries, I assume that supply and demand are equal to total export and imports, respectively. For the top ten oil producers, I use US Energy Information Administration (EIA) estimates \citep{} for those countries' consumption of their own domestic production. 
+For the majority of countries, I assume that supply and demand are equal to total export and imports, respectively. For the top ten oil producers, I use US Energy Information Administration (EIA) estimates \citep{eia_2013} for those countries' consumption of their own domestic production. 
 
 Political instability estimates are taken from the Economist Intelligence Unit's Political Index ratings \citep{eiu_2013}. These are in turn estimated based on the methodology developed by the Political Instability Task Force \citep{goldstone_2005}, which could predict the onset of internal instability in a two-year period with 80\% accuracy. Thus, these scores are normalized such that a rating of 10 (the maximum) is associated with an 80\% probability of instability within a 24-month timeframe, translating into a [[FILLIN]] monthly probability of crisis onset.
 
-Crisis duration is drawn independently from onset. \citet{cioffi_2004} and others have argued that internal and external conflict durations follow a power law distribution, which I use here. Specifically, in order to accomodate the limitations of the MASON random-number generator, I use a uniform approximation \citep{weisstein_2013}, defined as:
-$$
-\left((x_{1}^{\alpha} - x_{0}^{\alpha})y + x_{0}^{\alpha}\right)^{\frac{1}{\alpha}} \sim \text{Power Law}
-$$
-where 
-$$Y \sim U[0,1]$$
-$$ x_0  \equiv \text{minimum}$$
-$$ x_1  \equiv \text{maximum}$$
-$$ \alpha \equiv \text{Coefficient}$$
-
-I calibrate the parameters from two datasets: \citet{PRIO} for armed conflict, and \citep{hendrix_2013}, the Social Conflict in Africa Database, which includes both armed and lower-level social conflicts. I subset the PRIO dataset for conflicts in Africa and merge it with SCAD, eliminating duplicates and events below the severity of a general strike, in order to obtain as complete as possible a set of crises and conflicts that may be associated with an oil production  shock. I find the duration of each event, and fit a power law to the resulting distribution, resulting in an estimated coefficient of $\mathbf{-1.37}$.
+Crisis duration is drawn independently from onset. \citet{cioffi_2004} and others have argued that internal and external conflict durations follow a power law distribution, which I use here. I calibrate the parameters from two datasets: the UCDP/PRIO Armed Conflict Dataset \citep{lotta_2013} for military conflicts, and the Social Conflict in Africa Database \citep{hendrix_2013}, which includes both armed and lower-level social conflicts. I subset the PRIO dataset for conflicts in Africa and merge it with SCAD, eliminating duplicates and events below the severity of a general strike, in order to obtain as complete as possible a set of crises and conflicts that may be associated with an oil production  shock. I find the duration of each event, and fit a power law to the resulting distribution, resulting in an estimated coefficient of $\mathbf{-1.37}$.
 
 \subsection{Formal Description}
 
@@ -73,7 +63,7 @@ Each agent represents an independent country. Agents are associated with the \te
 
 \paragraph{Oil Submodel}
 \begin{itemize}
-	\item \textbf{Domestic Share} of the country's oil demand satisfied by domestic production. For most countries, this defaults to 0; for the top ten oil producers, it is set based on US Energy Information Administration data \citep{}.
+	\item \textbf{Domestic Share} of the country's oil demand satisfied by domestic production. For most countries, this defaults to 0; for the top ten oil producers, it is set based on US Energy Information Administration data \citep{eia_2013}.
 	\item \textbf{Total Imports} is the sum of the current volume of all oil imports. 
 	\item \textbf{Total Demand} is the sum of current imported and domestic oil consumed. Since the EIA reports the share of total consumption that is domestically-sourced, demand is calculated as: $$\text{Total Demand}_i = \sum_j e_{j,i} \cdot (1 - \text{Domestic Share})^{-1}$$
 	With $Total Imports$ set at the initial baseline. If current imports increase (as explained below) then supply will exceed demand. 
@@ -84,15 +74,25 @@ Each agent represents an independent country. Agents are associated with the \te
 \begin{itemize}
 	\item \textbf{Instability} is a measure of the country's political instability on a 0-10 scale, and determines the probability of a crisis or conflict -- a production shock. It is obtained from \citet{eiu_2013}. 
 	\item \textbf{In Crisis?} is simply a boolean variable determining whether or not a country is currently experiencing a crisis or conflict.
-	\item \textbf{Crisis Length} is the number of months remaining in a crisis, if one is currently in process. When a country enters crisis, this number is drawn from a power law distribution, as described below.
+	\item \textbf{Crisis Length} is the number of months remaining in a crisis, if one is currently in process. When a country enters crisis, this number is drawn from a power law distribution. Specifically, in order to accomodate the limitations of the MASON random-number generator, I use a uniform approximation \citep{weisstein_2013}, defined as:
+$$
+\left((x_{1}^{\alpha} - x_{0}^{\alpha})y + x_{0}^{\alpha}\right)^{\frac{1}{\alpha}} \sim \text{Power Law}
+$$
+where 
+$$r.v. y \sim U[0,1]$$
+$$ x_0  \equiv \text{minimum}$$
+$$ x_1  \equiv \text{maximum}$$
+$$ \alpha \equiv \text{Coefficient}$$
+
 \end{itemize}
 
 \paragraph{Assistance Submodel}
 \begin{itemize}
+	\item \textbf{Spare Capacity} is the country's capacity to rapidly increase oil for export above its inital baseline. Defaults to 0.1 (that is, countries can rapidly increase output by 10\%) based on estimation from \citet{mearns_2012}, \citet{iea_opec} and  consultations with subject-matter experts. 
 	\item \textbf{Increasing Production} is a boolean of whether or not the country is currently in a state of temporarily-increased production.
 	\item \textbf{Increasing Production For} stores the country being assisted. I assume that countries target their assistance at one other country.
-		\item \textbf{Crisis Length} is the number of months remaining in a crisis, if one is currently in process. When a country enters crisis, this number is drawn from a power law distribution, as described below.
-			\item \textbf{Total Capacity} is the country's capacity to rapidly increase oil for export above its inital baseline. Defaults to 1.1 (that is, countries can rapidly increase output by 10\%) based on consultations with subject-matter experts. 
+	\item \textbf{Crisis Length} is the number of months remaining in a crisis, if one is currently in process. When a country enters crisis, this number is drawn from a power law distribution, as described below.
+	
 \end{itemize}
 
 \subsubsection{Agent Behavior}

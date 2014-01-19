@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Paper.aux
+The style file: splncs.bst
+Database file #1: energysecurity.bib
+Warning--empty institution in eiu_2013
+Warning--empty publisher in cioffi_2004
+You've used 27 entries,
+            2087 wiz_defined-function locations,
+            622 strings with 6830 characters,
+and the built_in function-call counts, 6074 in all, are:
+= -- 600
+> -- 148
+< -- 11
++ -- 65
+- -- 38
+* -- 392
+:= -- 798
+add.period$ -- 19
+call.type$ -- 27
+change.case$ -- 27
+chr.to.int$ -- 0
+cite$ -- 29
+duplicate$ -- 341
+empty$ -- 632
+format.name$ -- 38
+if$ -- 1455
+int.to.chr$ -- 0
+int.to.str$ -- 27
+missing$ -- 17
+newline$ -- 129
+num.names$ -- 29
+pop$ -- 102
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 250
+stack$ -- 0
+substring$ -- 346
+swap$ -- 175
+text.length$ -- 11
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 59
+width$ -- 29
+write$ -- 277
+(There were 2 warnings)

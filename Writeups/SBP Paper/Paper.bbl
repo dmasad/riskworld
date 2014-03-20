@@ -7,15 +7,18 @@
 \bibitem{yergin_2006}
 Yergin, D.:
 \newblock Ensuring energy security.
-\newblock Foreign Affairs \textbf{85}(2) (March 2006)  69--82 {ArticleType:}
-  research-article / Full publication date: Mar. - Apr., 2006 / Copyright ©
-  2006 Council on Foreign Relations.
+\newblock Foreign Affairs \textbf{85}(2) (March 2006)  69--82
 
 \bibitem{wu_2009}
 Wu, G., Liu, L.C., Wei, Y.M.:
 \newblock Comparison of china's oil import risk: Results based on portfolio
   theory and a diversification index approach.
 \newblock Energy Policy \textbf{37}(9) (September 2009)  3557--3565
+
+\bibitem{jewell_2011}
+Jewell, J., {International Energy Agency}:
+\newblock The {IEA} model of short-term energy security.
+\newblock Technical report, International Energy Agency (2011)
 
 \bibitem{stirling_2010}
 Stirling, A.:
@@ -47,12 +50,6 @@ Geller, A.:
 \newblock Cambridge Review of International Affairs \textbf{24}(1) (2011)
   63--80
 
-\bibitem{black_2013}
-Black, N.:
-\newblock When have violent civil conflicts spread? introducing a dataset of
-  substate conflict contagion.
-\newblock Journal of Peace Research \textbf{50}(6) (November 2013)  751--759
-
 \bibitem{hamilton_2003}
 Hamilton, J.D.:
 \newblock What is an oil shock?
@@ -75,12 +72,12 @@ Kilian, L.:
 
 \bibitem{canada_2009}
 {Natural Resources Canada}:
-\newblock Demand and consumption {\textbar} energy sector (January 2009)
+\newblock Energy sector demand and consumption (January 2009)
 
 \bibitem{eia_domestic}
 {United States Energy Information Administration}:
-\newblock How much of the oil produced in the united states is consumed in the
-  united states? (March 2013)
+\newblock How much of the oil produced in the {United States} is consumed in
+  the {United States}? (March 2013)
 
 \bibitem{mohamedi_2010}
 Mohamedi, F.:
@@ -89,7 +86,7 @@ Mohamedi, F.:
 
 \bibitem{rasmi_2013}
 Rasmi, A.:
-\newblock The risks of saudi oil consumption.
+\newblock The risks of {Saudi oil} consumption.
 \newblock The Daily Star Newspaper - Lebanon (June 2013)
 
 \bibitem{mearns_2012}
@@ -98,7 +95,8 @@ Mearns, E.:
 
 \bibitem{daya_2012}
 Daya, A.:
-\newblock Saudi arabia can raise output 25\% if needed, naimi says (March 2012)
+\newblock {Saudi Arabia} can raise output 25\% if needed, naimi says (March
+  2012)
 
 \bibitem{eiu_2013}
 {Economist Intelligence Unit}:
@@ -125,19 +123,6 @@ Themnér, L., Wallensteen, P.:
 
 \bibitem{hendrix_2013}
 {Cullen S. Hendrix}, {Idean Salehyan}:
-\newblock Social conflict in africa database ({SCAD)} (2013)
-
-\bibitem{luke_2005}
-Luke, S., Cioffi-Revilla, C., Panait, L., Sullivan, K., Balan, G.:
-\newblock Mason: A multiagent simulation environment.
-\newblock Simulation \textbf{81}(7) (2005)  517–527
-
-\bibitem{weisstein_2013}
-Weisstein, E.W.:
-\newblock Random number -- from wolfram {MathWorld} (2013)
-
-\bibitem{eia_opec}
-{United States Energy Information Administration}:
-\newblock Supply: {OPEC} (November 2013)
+\newblock Social conflict in {Africa} database ({SCAD)} (2013)
 
 \end{thebibliography}

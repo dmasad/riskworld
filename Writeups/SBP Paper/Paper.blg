@@ -5,45 +5,45 @@ The style file: splncs.bst
 Database file #1: energysecurity.bib
 Warning--empty institution in eiu_2013
 Warning--empty publisher in cioffi_2004
-You've used 27 entries,
+You've used 24 entries,
             2087 wiz_defined-function locations,
-            622 strings with 6830 characters,
-and the built_in function-call counts, 6074 in all, are:
-= -- 600
-> -- 148
-< -- 11
-+ -- 65
-- -- 38
-* -- 392
-:= -- 798
-add.period$ -- 19
-call.type$ -- 27
-change.case$ -- 27
+            607 strings with 6417 characters,
+and the built_in function-call counts, 5248 in all, are:
+= -- 520
+> -- 127
+< -- 9
++ -- 56
+- -- 32
+* -- 340
+:= -- 703
+add.period$ -- 17
+call.type$ -- 24
+change.case$ -- 25
 chr.to.int$ -- 0
-cite$ -- 29
-duplicate$ -- 341
-empty$ -- 632
-format.name$ -- 38
-if$ -- 1455
+cite$ -- 26
+duplicate$ -- 288
+empty$ -- 555
+format.name$ -- 32
+if$ -- 1252
 int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 17
-newline$ -- 129
-num.names$ -- 29
-pop$ -- 102
+int.to.str$ -- 24
+missing$ -- 15
+newline$ -- 116
+num.names$ -- 26
+pop$ -- 90
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 250
+skip$ -- 200
 stack$ -- 0
-substring$ -- 346
-swap$ -- 175
-text.length$ -- 11
+substring$ -- 296
+swap$ -- 138
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 59
-width$ -- 29
-write$ -- 277
+while$ -- 52
+width$ -- 26
+write$ -- 247
 (There were 2 warnings)
